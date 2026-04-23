@@ -208,7 +208,7 @@
     </section>
 
   <!-- RECENSIONI -->
-  <section class="section section-dark">
+  <section class="section section-dark reviews-section">
     <div class="container">
       <div class="section-head section-head-dark">
         <p class="section-tag">Recensioni</p>
@@ -216,12 +216,17 @@
         <p>Recensioni reali da Google</p>
       </div>
 
-      <div id="reviews-summary">Caricamento recensioni...</div>
-      <div id="reviews-grid"></div>
+      <div id="reviews-summary" class="reviews-summary">Caricamento recensioni...</div>
 
-      <a id="reviews-link" href="#" target="_blank">
-        Leggi tutte su Google
-      </a>
+      <div class="reviews-slider-wrap">
+        <div id="reviews-grid" class="reviews-slider"></div>
+      </div>
+
+      <div class="reviews-footer">
+        <a id="reviews-link" href="#" target="_blank" rel="noopener" class="btn btn-outline">
+          Leggi tutte su Google
+        </a>
+      </div>
     </div>
   </section>
     <!--<section class="section reviews-embed-section">

@@ -87,29 +87,44 @@ document.addEventListener("DOMContentLoaded", () => {
           throw new Error(data.error || "Errore nel caricamento recensioni");
         }
 
+        const starsBig = "★".repeat(Math.round(data.rating || 0));
+
         reviewsSummary.innerHTML = `
           <div class="review-score-card">
-            <div class="review-score">${data.rating} ★</div>
+            <div class="review-score-main">
+              <div class="review-score">${data.rating}</div>
+              <div class="review-stars-big">${starsBig}</div>
+            </div>
             <div class="review-count">${data.userRatingCount} recensioni Google</div>
           </div>
         `;
 
-        reviewsLink.href = data.reviewsUri || data.googleMapsUri || "#";
+        reviewsLink.href = data.googleMapsUri || "#";
 
-        reviewsGrid.innerHTML = (data.reviews || [])
+        const reviews = data.reviews || [];
+
+        reviewsGrid.innerHTML = reviews
           .map(
             (review) => `
               <article class="review-card">
-                <div class="review-card-top">
-                  <strong>${review.author}</strong>
-                  <span>${"★".repeat(review.rating)}</span>
+                <div>
+                  <div class="review-card-top">
+                    <div class="review-author">${review.author}</div>
+                    <div class="review-stars">${"★".repeat(review.rating)}</div>
+                  </div>
+                  <p class="review-text">${review.text}</p>
                 </div>
-                <p>${review.text}</p>
-                <small>${review.publishedAt}</small>
+                <div class="review-meta">${review.publishedAt}</div>
               </article>
             `
           )
           .join("");
+
+        // Duplica le card per effetto scorrimento continuo desktop
+        if (window.innerWidth > 768 && reviews.length > 0) {
+          reviewsGrid.innerHTML += reviewsGrid.innerHTML;
+          reviewsGrid.style.animation = "reviewsMarquee 35s linear infinite";
+        }
       })
       .catch((error) => {
         reviewsSummary.textContent = "Non è stato possibile caricare le recensioni.";
