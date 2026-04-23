@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <link rel="icon" href="../favicon.png" sizes="64x64" type="image/png">
+  <link rel="apple-touch-icon" href="../favicon.png">
+    <script>
+    var _iub = _iub || [];
+    _iub.csConfiguration = {
+      siteId: 1234567,
+      cookiePolicyId: 12345678,
+      banner: {
+        position: "bottom",
+        acceptButtonDisplay: true,
+        customizeButtonDisplay: true
+      }
+    };
+  </script>
+  <script type="text/javascript" src="https://embeds.iubenda.com/widgets/bc12cccb-8097-4cae-b0c9-a9e6264d0b60.js"></script>
+  <script src="https://cdn.iubenda.com/cs/iubenda_cs.js" async></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contatti CLM Automation | Realizzazione siti web a Novara</title>
+  <meta name="description" content="Contatta CLM Automation per informazioni sulla realizzazione di siti web a Novara per professionisti, studi e attività locali.">
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="contatti.css">
+</head>
+<body>
+  <div id="success-message" class="success-toast">
+    Richiesta inviata correttamente ✅
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../images/logo/logo.png" alt="CLM Automation" class="header-logo">
+      </a>
+
+      <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav">
+	      <a href="../index.html">Home</a>
+        <a href="../chi-siamo/index.html">Chi siamo</a>
+        <a href="../servizi/index.html">Servizi</a>
+        <a href="../pacchetti/index.html">Pacchetti</a>
+        <a href="../metodo/index.html">Metodo</a>
+        <a href="../contatti/index.html">Contatti</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle nav-template">
+            Template ▾
+          </button>
+
+        <div class="nav-dropdown-menu">
+          <a href="../avvocati/index.html">Avvocati</a>
+          <a href="../medici/index.html">Medici</a>
+          <a href="../professionisti/index.html">Professionisti</a>
+        </div>
+      </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section page-hero">
+      <div class="container">
+        <p class="section-tag">Contatti</p>
+        <div class="hero-logo-block">
+          <h1 class="hero-title-gradient">
+            Contatti per realizzazione siti web a Novara
+          </h1>
+        </div>
+        <p class="hero-text">
+          Se desideri un sito web chiaro, moderno e professionale per la tua attività,
+          puoi scriverci per ricevere informazioni e un primo confronto sul progetto.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container contact-grid">
+        <div>
+          <h2>Richiedi informazioni per il tuo sito web</h2>
+
+          <p class="contact-intro">
+            CLM Automation realizza siti web a Novara per professionisti, studi e attività locali
+            che vogliono presentarsi online in modo serio, ordinato e professionale.
+          </p>
+
+          <div class="contact-list">
+            <p><strong>Azienda:</strong> CLM Automation</p>
+            <p><strong>Attività:</strong> Realizzazione siti web professionali</p>
+            <p><strong>Zona operativa:</strong> Novara e provincia</p>
+            <p><strong>Email:</strong> <a href="mailto:c.lomonaco@clmautomation.com">c.lomonaco@clmautomation.com</a></p>
+            <p><strong>Telefono:</strong> <a href="tel:+393473893863">+39 347 389 3863</a></p>
+          </div>
+
+          <div class="contact-actions">
+            <a href="mailto:c.lomonaco@clmautomation.com" class="btn btn-secondary">Invia email</a>
+            <a href="https://wa.me/393473893863?text=Ciao%20CLM%20Automation%2C%20vorrei%20informazioni%20per%20un%20sito%20web" class="btn btn-outline" target="_blank" rel="noopener">
+              Scrivici su WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <form id="contact-form" class="contact-form" name="contatti" method="POST" data-netlify="true" netlify>
+          <input type="hidden" name="form-name" value="contatti">
+
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input id="name" name="name" type="text" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="activity">Attività</label>
+            <input id="activity" name="activity" type="text" placeholder="Es. Studio legale, studio medico, consulenza, impresa...">
+          </div>
+
+          <div class="form-group">
+            <label for="message">Messaggio</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full">Invia richiesta</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p>© 2026 CLM Automation - Tutti i diritti riservati</p>
+        <p>Ditta specializzata in sviluppo siti web</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+
+  <form name="contatti" netlify hidden>
+    <input type="text" name="name">
+    <input type="email" name="email">
+    <input type="text" name="activity">
+    <textarea name="message"></textarea>
+  </form>
+</body>
+</html>

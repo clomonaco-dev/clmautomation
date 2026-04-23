@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://clmautomation.it/sitemap.xml
