@@ -7,7 +7,8 @@
 .reviews-embed-section,
 .cta-section {
   position: relative;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at center,
       rgba(20, 40, 90, 0.35) 0%,
       rgba(10, 20, 45, 0.9) 60%,
@@ -197,10 +198,9 @@
   color: #fff;
 }
 
-
 .certificato-card img {
   width: 100%;
-  max-width: 220px;   /* 👈 dimensione controllata */
+  max-width: 220px; /* 👈 dimensione controllata */
   height: auto;
   margin: 0 auto;
   display: block;
@@ -215,7 +215,6 @@
 .certificato-card p {
   color: rgba(255, 255, 255, 0.8);
 }
-
 
 .certificato-card:hover img {
   transform: scale(1.03);
@@ -309,7 +308,6 @@
   color: #ff8a1f !important;
 }
 
-
 /* responsive */
 @media (max-width: 900px) {
   .chi-siamo-sectors-grid {
@@ -335,7 +333,10 @@
   background: rgba(255, 255, 255, 0.03);
   color: #fff;
   backdrop-filter: blur(6px);
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
 .garanzia-card:hover {
@@ -556,7 +557,10 @@
   padding: 18px 20px;
   border-radius: 18px;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .doc-link:hover {
@@ -612,4 +616,50 @@
 .competence-points li::before {
   color: #6f8dff;
   content: none;
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+  }
+
+  .about-copy,
+  .about-card,
+  .about-card-tall {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .about-card-tall {
+    flex: none;
+    justify-content: flex-start;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .about-grid {
+    gap: 1.5rem;
+  }
+
+  .about-card-tall {
+    padding: 1.25rem;
+    border-radius: 18px;
+  }
+
+  .about-card h3 {
+    font-size: 1.45rem;
+  }
+
+  .about-card .info-item strong {
+    font-size: 1.05rem;
+  }
+
+  .about-card .info-item span {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
 }
