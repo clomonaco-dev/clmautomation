@@ -1,0 +1,24 @@
+{
+  "name": "clm-automation",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/routes.test.mjs tests/legacy-compatibility.test.mjs",
+    "preview": "node scripts/preview.mjs"
+  },
+  "dependencies": {
+    "next": "^16.2.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "@fontsource/dm-sans": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5.9"
+  }
+}
