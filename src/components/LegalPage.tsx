@@ -1,59 +1,251 @@
-import Link from 'next/link';
-import { email, href, type Locale } from '@/lib/routes';
-export const legalRoutes=['privacy','cookie-policy','termini-condizioni'] as const;
-type LegalRoute=typeof legalRoutes[number];
-export function legalTitle(locale:Locale,route:string){return ({privacy:locale==='it'?'Informativa privacy':'Privacy notice','cookie-policy':locale==='it'?'Informativa cookie':'Cookie policy','termini-condizioni':locale==='it'?'Termini e condizioni':'Terms and conditions'} as Record<string,string>)[route];}
-const copy={
-it:{
- privacy:[
- ['Chi gestisce il sito','Il titolare del trattamento è CLM AUTOMATION DI CATALDO ING LO MONACO, partita IVA 02679950036, che gestisce clmautomation.it. Per informazioni sul trattamento dei dati e per esercitare i tuoi diritti: c.lomonaco@clmautomation.com. Recapito pubblicato sul sito: Viale Parona 33, 28024 Gozzano (NO), Italia.'],
- ['Dati del modulo di contatto','Il modulo raccoglie nome, email, attività (facoltativa), servizio di interesse, lingua e messaggio. Questi dati servono a rispondere alla richiesta e a valutare un eventuale progetto. La base giuridica è l’esecuzione di misure precontrattuali richieste dall’interessato (art. 6.1.b GDPR). Il conferimento è volontario, ma nome, email e messaggio sono necessari per gestire il contatto. Non inviare dati sanitari, credenziali o informazioni non necessarie.'],
- ['Hosting e gestione delle richieste','Il sito utilizza Netlify per l’hosting e Netlify Forms per ricevere e conservare gli invii del modulo. I dati possono essere consultati da chi gestisce le richieste e dai fornitori tecnici coinvolti nell’erogazione del servizio. Il modulo non iscrive a newsletter e non attiva comunicazioni promozionali.'],
- ['Statistiche facoltative','Umami, collegato al dominio analytics.clmautomation.it, viene caricato solo dopo l’accettazione delle statistiche. Serve a comprendere l’utilizzo delle pagine e raccoglie informazioni di navigazione e del dispositivo. Il sito non invia a Umami i campi del modulo; il tracker è configurato per escludere parametri di ricerca e frammenti degli URL. La base giuridica è il consenso (art. 6.1.a GDPR), revocabile da “Preferenze cookie”.'],
- ['Dati tecnici e sicurezza','Le richieste al sito comportano il trattamento di dati tecnici, come indirizzo IP, data e informazioni del browser, da parte dell’infrastruttura di hosting. La finalità è erogare il sito, prevenire abusi e tutelarne la sicurezza, sulla base del legittimo interesse (art. 6.1.f GDPR).'],
- ['Recensioni e collegamenti esterni','Le recensioni Google sono recuperate dal server e riportano contenuti pubblici, nome dell’autore, valutazione e data. Il caricamento delle card non incorpora una mappa Google nel browser. Aprendo collegamenti a Google, WhatsApp o altri siti si applicano anche le informative dei rispettivi gestori.'],
- ['Conservazione','Le richieste vengono conservate per il tempo necessario a gestire il contatto e le eventuali trattative; se nasce un rapporto contrattuale, per la sua gestione e gli obblighi di legge applicabili. Eventuali controversie possono richiedere ulteriore conservazione. La preferenza per le statistiche scade dopo sei mesi nel browser. I tempi effettivi di conservazione sui servizi Netlify e Umami dipendono anche dalle impostazioni del gestore e non vengono modificati dalla cancellazione della preferenza nel browser.'],
- ['Fornitori e trasferimenti','I servizi tecnici possono comportare trattamenti fuori dallo Spazio economico europeo. Le garanzie applicabili dipendono dai contratti, dai subfornitori e dalla configurazione dei servizi utilizzati; informazioni e copia delle garanzie possono essere richieste al recapito indicato sopra. La documentazione Netlify sul trattamento dei dati è collegata in fondo alla pagina.'],
- ['I tuoi diritti','Nei casi previsti dal GDPR puoi chiedere accesso, rettifica, cancellazione, limitazione e portabilità dei dati, opporti ai trattamenti basati sul legittimo interesse e revocare il consenso senza pregiudicare il trattamento precedente. Scrivi a c.lomonaco@clmautomation.com. Puoi presentare reclamo al Garante per la protezione dei dati personali, www.garanteprivacy.it. Non vengono assunte decisioni automatizzate con effetti giuridici tramite il modulo di contatto.']
- ],
- 'cookie-policy':[
- ['Come vengono gestite le preferenze','Il sito salva nel localStorage del browser la chiave clm-analytics: contiene accettazione o rifiuto, versione della scelta e data di scadenza. È una memoria tecnica necessaria a rispettare la tua preferenza e non è un cookie pubblicitario. Scade dopo sei mesi; puoi eliminarla anche dalle impostazioni del browser.'],
- ['Statistiche Umami','Le statistiche sono facoltative. Prima della scelta e quando selezioni “Solo essenziali”, il sito non carica lo script Umami. Accettando, viene abilitato il servizio su analytics.clmautomation.it. Umami è progettato per statistiche senza cookie di tracciamento; in questo sito il suo caricamento è comunque subordinato alla tua scelta. Non inviamo a Umami i contenuti del modulo.'],
- ['Modificare o revocare la scelta','Il pulsante “Preferenze cookie” è sempre disponibile nel footer. Puoi rifiutare le statistiche dopo averle accettate: il sito ricarica la pagina per interrompere il tracker già attivo. Il rifiuto non impedisce di consultare le pagine o inviare una richiesta. La revoca non cancella automaticamente i dati già raccolti dal servizio.'],
- ['Altri servizi','I font sono ospitati insieme al sito. Le recensioni vengono recuperate dal server, senza incorporare widget Google nel browser. I collegamenti a servizi esterni si aprono soltanto quando li selezioni. L’infrastruttura di hosting può utilizzare misure tecniche di sicurezza; non sono configurati pixel pubblicitari nel codice del sito.']
- ],
- 'termini-condizioni':[
- ['Oggetto del sito','clmautomation.it presenta i servizi di CLM Automation: realizzazione e restyling di siti, sviluppo web e attività correlate. Questi termini disciplinano la consultazione del sito. Le condizioni di un incarico sono definite nel preventivo e nell’accordo specifico.'],
- ['Preventivi e incarichi','L’invio del modulo è una richiesta di informazioni e non conclude un contratto né comporta un acquisto. Prezzi e pacchetti pubblicati sono indicativi: perimetro, imposte applicabili, pagamenti, tempi, revisioni, hosting, licenze e assistenza sono precisati nel preventivo.'],
- ['Esempi e risultati','Le anteprime indicate come demo o concept illustrano possibili direzioni progettuali e non rappresentano necessariamente lavori per clienti. Non sono garantiti risultati commerciali o posizionamenti sui motori di ricerca. Le recensioni rappresentano l’esperienza dei rispettivi autori.'],
- ['Contenuti e utilizzo corretto','Testi, grafica, codice e immagini sono tutelati dai diritti dei rispettivi titolari. La consultazione non concede una licenza di riproduzione o utilizzo commerciale. Non utilizzare il sito per inviare contenuti illeciti, spam o tentare accessi non autorizzati.'],
- ['Disponibilità e collegamenti','Il sito può essere aggiornato o temporaneamente non disponibile. I collegamenti esterni rimandano a servizi gestiti da terzi. Nulla in questi termini limita diritti inderogabili dell’utente o esclude responsabilità che non possono essere escluse per legge.'],
- ['Contatti e aggiornamenti','Per chiarimenti scrivi a c.lomonaco@clmautomation.com. Le modifiche a queste pagine sono pubblicate con una data di aggiornamento. Eventuali condizioni diverse relative a uno specifico progetto devono essere concordate per iscritto.']
- ]},
-en:{
- privacy:[
- ['Who operates this website','The data controller is CLM AUTOMATION DI CATALDO ING LO MONACO, Italian VAT number 02679950036, which operates clmautomation.it. For questions about data processing and to exercise your rights, contact c.lomonaco@clmautomation.com. Published contact address: Viale Parona 33, 28024 Gozzano (NO), Italy.'],
- ['Contact form data','The form collects name, email, optional business name, service of interest, language and message to respond to your enquiry and discuss a project. The legal basis is taking steps at your request before entering into a contract (GDPR Article 6(1)(b)). Providing data is voluntary, but name, email and message are needed to handle the request. Do not send health data, passwords or unnecessary confidential information.'],
- ['Hosting and enquiries','Netlify hosts the website and Netlify Forms receives and stores form submissions. People handling enquiries and relevant technical providers may access the data to deliver the service. The form does not subscribe you to newsletters or promotional messages.'],
- ['Optional analytics','Umami at analytics.clmautomation.it loads only after you accept analytics. It helps understand page usage through browsing and device information. This website does not send form fields to Umami; the tracker is configured to exclude URL query parameters and fragments. The legal basis is consent (Article 6(1)(a)), which you can withdraw through Cookie preferences.'],
- ['Technical data and security','Hosting infrastructure processes technical request data such as IP address, time and browser information to deliver the website, prevent abuse and maintain security, on the basis of legitimate interests (Article 6(1)(f)).'],
- ['Reviews and external links','Google reviews are retrieved by the server and display public content, author names, ratings and dates. The cards do not embed a Google map in your browser. Visiting Google, WhatsApp or other external links also involves the respective providers’ privacy notices.'],
- ['Retention','Enquiries are kept as needed to handle your request and related discussions. If a contract follows, data is retained for its administration and applicable legal obligations. Disputes may require longer retention. The browser analytics preference expires after six months. Actual retention within Netlify and Umami also depends on the operator’s settings and is not changed by deleting your browser preference.'],
- ['Providers and transfers','Technical services may involve processing outside the European Economic Area. Applicable safeguards depend on service contracts, subprocessors and configuration. Information and copies of safeguards can be requested using the contact address above. Netlify’s data processing documentation is linked below.'],
- ['Your rights','Where applicable, you may request access, correction, erasure, restriction and portability, object to processing based on legitimate interests and withdraw consent without affecting earlier lawful processing. Contact c.lomonaco@clmautomation.com. You may complain to the Italian Data Protection Authority at www.garanteprivacy.it or your competent supervisory authority. The contact form does not make automated decisions with legal effects.']
- ],
- 'cookie-policy':[
- ['Preference storage','The website stores clm-analytics in your browser’s localStorage, containing acceptance or refusal, a version and an expiry date. This technical storage respects your preference and is not an advertising cookie. It expires after six months and can also be removed through browser settings.'],
- ['Umami analytics','Analytics is optional. Before you choose and when you select Essential only, the website does not load Umami. Acceptance enables analytics.clmautomation.it. Umami is designed for analytics without tracking cookies; this website nevertheless requires your choice before loading it. Form contents are not sent to Umami.'],
- ['Change or withdraw your choice','Cookie preferences is always available in the footer. Refusing analytics after accepting reloads the page to stop the existing tracker. Refusing does not prevent browsing or making an enquiry. Withdrawal does not automatically erase previously collected service data.'],
- ['Other services','Fonts are hosted with the website. Reviews are retrieved on the server without embedding Google widgets in the browser. External links open only when selected. Hosting infrastructure may use technical security measures; no advertising pixels are configured in the website code.']
- ],
- 'termini-condizioni':[
- ['Scope','clmautomation.it presents CLM Automation’s website design, redesign, web development and related services. These terms concern use of the website. Project terms are set out in a specific quote and agreement.'],
- ['Enquiries and agreements','Sending the form requests information; it does not conclude a contract or purchase. Published prices and packages are indicative. Scope, applicable taxes, payment, timing, revisions, hosting, licences and support are specified in the quote.'],
- ['Examples and outcomes','Previews marked demo or concept illustrate possible design directions and do not necessarily represent client work. Commercial outcomes and search rankings are not guaranteed. Reviews reflect their authors’ experiences.'],
- ['Content and acceptable use','Text, design, code and images are protected by their respective owners’ rights. Browsing does not grant a licence for reproduction or commercial use. Do not use the website for unlawful messages, spam or attempted unauthorised access.'],
- ['Availability and external links','The website may change or be temporarily unavailable. External links lead to third-party services. These terms do not limit mandatory user rights or exclude liability that cannot legally be excluded.'],
- ['Contact and updates','For questions, contact c.lomonaco@clmautomation.com. Changes to these pages are published with an update date. Different terms for a specific project must be agreed in writing.']
- ]}} as const;
-export function LegalPage({locale,route}:{locale:Locale;route:LegalRoute}){return <article className="shell legal-page"><p className="eyebrow">CLM AUTOMATION / {locale==='it'?'Informazioni legali':'Legal information'}</p><h1>{legalTitle(locale,route)}</h1><p className="legal-updated">{locale==='it'?'Aggiornamento: 24 settembre 2026':'Updated: 24 September 2026'}</p><nav className="legal-nav" aria-label={locale==='it'?'Informative':'Policies'}>{legalRoutes.map(r=><Link key={r} href={href(locale,r)} aria-current={r===route?'page':undefined}>{legalTitle(locale,r)}</Link>)}</nav>{copy[locale][route].map(([title,body])=><section key={title}><h2>{title}</h2><p>{body}</p></section>)}<p><a href={'mailto:'+email}>{email}</a></p>{route==='privacy'&&<p className="legal-sources"><a href="https://www.netlify.com/gdpr-ccpa/" target="_blank" rel="noopener noreferrer">Netlify — Data Processing Agreement ↗</a><a href="https://www.garanteprivacy.it/" target="_blank" rel="noopener noreferrer">Garante per la protezione dei dati personali ↗</a></p>}</article>}
+import Link from "next/link";
+import { email, href, type Locale } from "@/lib/routes";
+export const legalRoutes = [
+  "privacy",
+  "cookie-policy",
+  "termini-condizioni",
+] as const;
+type LegalRoute = (typeof legalRoutes)[number];
+export function legalTitle(locale: Locale, route: string) {
+  return (
+    {
+      privacy: locale === "it" ? "Informativa privacy" : "Privacy notice",
+      "cookie-policy": locale === "it" ? "Informativa cookie" : "Cookie policy",
+      "termini-condizioni":
+        locale === "it" ? "Termini e condizioni" : "Terms and conditions",
+    } as Record<string, string>
+  )[route];
+}
+const copy = {
+  it: {
+    privacy: [
+      [
+        "Chi gestisce il sito",
+        "Il titolare del trattamento è CLM AUTOMATION DI CATALDO ING LO MONACO, partita IVA 02679950036, che gestisce clmautomation.it. Per informazioni sul trattamento dei dati e per esercitare i tuoi diritti: c.lomonaco@clmautomation.com. Recapito pubblicato sul sito: Viale Parona 33, 28024 Gozzano (NO), Italia.",
+      ],
+      [
+        "Dati del modulo di contatto",
+        "Il modulo raccoglie nome, email, attività (facoltativa), servizio di interesse, lingua e messaggio. Questi dati servono a rispondere alla richiesta e a valutare un eventuale progetto. La base giuridica è l’esecuzione di misure precontrattuali richieste dall’interessato (art. 6.1.b GDPR). Il conferimento è volontario, ma nome, email e messaggio sono necessari per gestire il contatto. Non inviare dati sanitari, credenziali o informazioni non necessarie.",
+      ],
+      [
+        "Hosting e gestione delle richieste",
+        "Il sito utilizza Netlify per l’hosting e Netlify Forms per ricevere e conservare gli invii del modulo. I dati possono essere consultati da chi gestisce le richieste e dai fornitori tecnici coinvolti nell’erogazione del servizio. Il modulo non iscrive a newsletter e non attiva comunicazioni promozionali.",
+      ],
+      [
+        "Statistiche facoltative",
+        "Umami, collegato al dominio analytics.clmautomation.it, viene caricato solo dopo l’accettazione delle statistiche. Serve a comprendere l’utilizzo delle pagine e raccoglie informazioni di navigazione e del dispositivo. Il sito non invia a Umami i campi del modulo; il tracker è configurato per escludere parametri di ricerca e frammenti degli URL. La base giuridica è il consenso (art. 6.1.a GDPR), revocabile da “Preferenze cookie”.",
+      ],
+      [
+        "Dati tecnici e sicurezza",
+        "Le richieste al sito comportano il trattamento di dati tecnici, come indirizzo IP, data e informazioni del browser, da parte dell’infrastruttura di hosting. La finalità è erogare il sito, prevenire abusi e tutelarne la sicurezza, sulla base del legittimo interesse (art. 6.1.f GDPR).",
+      ],
+      [
+        "Recensioni e collegamenti esterni",
+        "Le recensioni Google sono recuperate dal server e riportano contenuti pubblici, nome dell’autore, valutazione e data. Il caricamento delle card non incorpora una mappa Google nel browser. Aprendo collegamenti a Google, WhatsApp o altri siti si applicano anche le informative dei rispettivi gestori.",
+      ],
+      [
+        "Conservazione",
+        "Le richieste vengono conservate per il tempo necessario a gestire il contatto e le eventuali trattative; se nasce un rapporto contrattuale, per la sua gestione e gli obblighi di legge applicabili. Eventuali controversie possono richiedere ulteriore conservazione. La preferenza per le statistiche scade dopo sei mesi nel browser. I tempi effettivi di conservazione sui servizi Netlify e Umami dipendono anche dalle impostazioni del gestore e non vengono modificati dalla cancellazione della preferenza nel browser.",
+      ],
+      [
+        "Fornitori e trasferimenti",
+        "I servizi tecnici possono comportare trattamenti fuori dallo Spazio economico europeo. Le garanzie applicabili dipendono dai contratti, dai subfornitori e dalla configurazione dei servizi utilizzati; informazioni e copia delle garanzie possono essere richieste al recapito indicato sopra. La documentazione Netlify sul trattamento dei dati è collegata in fondo alla pagina.",
+      ],
+      [
+        "I tuoi diritti",
+        "Nei casi previsti dal GDPR puoi chiedere accesso, rettifica, cancellazione, limitazione e portabilità dei dati, opporti ai trattamenti basati sul legittimo interesse e revocare il consenso senza pregiudicare il trattamento precedente. Scrivi a c.lomonaco@clmautomation.com. Puoi presentare reclamo al Garante per la protezione dei dati personali, www.garanteprivacy.it. Non vengono assunte decisioni automatizzate con effetti giuridici tramite il modulo di contatto.",
+      ],
+    ],
+    "cookie-policy": [
+      [
+        "Come vengono gestite le preferenze",
+        "Il sito salva nel localStorage del browser la chiave clm-analytics: contiene accettazione o rifiuto, versione della scelta e data di scadenza. È una memoria tecnica necessaria a rispettare la tua preferenza e non è un cookie pubblicitario. Scade dopo sei mesi; puoi eliminarla anche dalle impostazioni del browser.",
+      ],
+      [
+        "Statistiche Umami",
+        "Le statistiche sono facoltative. Prima della scelta e quando selezioni “Solo essenziali”, il sito non carica lo script Umami. Accettando, viene abilitato il servizio su analytics.clmautomation.it. Umami è progettato per statistiche senza cookie di tracciamento; in questo sito il suo caricamento è comunque subordinato alla tua scelta. Non inviamo a Umami i contenuti del modulo.",
+      ],
+      [
+        "Modificare o revocare la scelta",
+        "Il pulsante “Preferenze cookie” è sempre disponibile nel footer. Puoi rifiutare le statistiche dopo averle accettate: il sito ricarica la pagina per interrompere il tracker già attivo. Il rifiuto non impedisce di consultare le pagine o inviare una richiesta. La revoca non cancella automaticamente i dati già raccolti dal servizio.",
+      ],
+      [
+        "Altri servizi",
+        "I font sono ospitati insieme al sito. Le recensioni vengono recuperate dal server, senza incorporare widget Google nel browser. I collegamenti a servizi esterni si aprono soltanto quando li selezioni. L’infrastruttura di hosting può utilizzare misure tecniche di sicurezza; non sono configurati pixel pubblicitari nel codice del sito.",
+      ],
+    ],
+    "termini-condizioni": [
+      [
+        "Oggetto del sito",
+        "clmautomation.it presenta i servizi di CLM Automation: realizzazione e restyling di siti, sviluppo web e attività correlate. Questi termini disciplinano la consultazione del sito. Le condizioni di un incarico sono definite nel preventivo e nell’accordo specifico.",
+      ],
+      [
+        "Preventivi e incarichi",
+        "L’invio del modulo è una richiesta di informazioni e non conclude un contratto né comporta un acquisto. Prezzi e pacchetti pubblicati sono indicativi: perimetro, imposte applicabili, pagamenti, tempi, revisioni, hosting, licenze e assistenza sono precisati nel preventivo.",
+      ],
+      [
+        "Esempi e risultati",
+        "Le anteprime indicate come demo o concept illustrano possibili direzioni progettuali e non rappresentano necessariamente lavori per clienti. Non sono garantiti risultati commerciali o posizionamenti sui motori di ricerca. Le recensioni rappresentano l’esperienza dei rispettivi autori.",
+      ],
+      [
+        "Contenuti e utilizzo corretto",
+        "Testi, grafica, codice e immagini sono tutelati dai diritti dei rispettivi titolari. La consultazione non concede una licenza di riproduzione o utilizzo commerciale. Non utilizzare il sito per inviare contenuti illeciti, spam o tentare accessi non autorizzati.",
+      ],
+      [
+        "Disponibilità e collegamenti",
+        "Il sito può essere aggiornato o temporaneamente non disponibile. I collegamenti esterni rimandano a servizi gestiti da terzi. Nulla in questi termini limita diritti inderogabili dell’utente o esclude responsabilità che non possono essere escluse per legge.",
+      ],
+      [
+        "Contatti e aggiornamenti",
+        "Per chiarimenti scrivi a c.lomonaco@clmautomation.com. Le modifiche a queste pagine sono pubblicate con una data di aggiornamento. Eventuali condizioni diverse relative a uno specifico progetto devono essere concordate per iscritto.",
+      ],
+    ],
+  },
+  en: {
+    privacy: [
+      [
+        "Who operates this website",
+        "The data controller is CLM AUTOMATION DI CATALDO ING LO MONACO, Italian VAT number 02679950036, which operates clmautomation.it. For questions about data processing and to exercise your rights, contact c.lomonaco@clmautomation.com. Published contact address: Viale Parona 33, 28024 Gozzano (NO), Italy.",
+      ],
+      [
+        "Contact form data",
+        "The form collects name, email, optional business name, service of interest, language and message to respond to your enquiry and discuss a project. The legal basis is taking steps at your request before entering into a contract (GDPR Article 6(1)(b)). Providing data is voluntary, but name, email and message are needed to handle the request. Do not send health data, passwords or unnecessary confidential information.",
+      ],
+      [
+        "Hosting and enquiries",
+        "Netlify hosts the website and Netlify Forms receives and stores form submissions. People handling enquiries and relevant technical providers may access the data to deliver the service. The form does not subscribe you to newsletters or promotional messages.",
+      ],
+      [
+        "Optional analytics",
+        "Umami at analytics.clmautomation.it loads only after you accept analytics. It helps understand page usage through browsing and device information. This website does not send form fields to Umami; the tracker is configured to exclude URL query parameters and fragments. The legal basis is consent (Article 6(1)(a)), which you can withdraw through Cookie preferences.",
+      ],
+      [
+        "Technical data and security",
+        "Hosting infrastructure processes technical request data such as IP address, time and browser information to deliver the website, prevent abuse and maintain security, on the basis of legitimate interests (Article 6(1)(f)).",
+      ],
+      [
+        "Reviews and external links",
+        "Google reviews are retrieved by the server and display public content, author names, ratings and dates. The cards do not embed a Google map in your browser. Visiting Google, WhatsApp or other external links also involves the respective providers’ privacy notices.",
+      ],
+      [
+        "Retention",
+        "Enquiries are kept as needed to handle your request and related discussions. If a contract follows, data is retained for its administration and applicable legal obligations. Disputes may require longer retention. The browser analytics preference expires after six months. Actual retention within Netlify and Umami also depends on the operator’s settings and is not changed by deleting your browser preference.",
+      ],
+      [
+        "Providers and transfers",
+        "Technical services may involve processing outside the European Economic Area. Applicable safeguards depend on service contracts, subprocessors and configuration. Information and copies of safeguards can be requested using the contact address above. Netlify’s data processing documentation is linked below.",
+      ],
+      [
+        "Your rights",
+        "Where applicable, you may request access, correction, erasure, restriction and portability, object to processing based on legitimate interests and withdraw consent without affecting earlier lawful processing. Contact c.lomonaco@clmautomation.com. You may complain to the Italian Data Protection Authority at www.garanteprivacy.it or your competent supervisory authority. The contact form does not make automated decisions with legal effects.",
+      ],
+    ],
+    "cookie-policy": [
+      [
+        "Preference storage",
+        "The website stores clm-analytics in your browser’s localStorage, containing acceptance or refusal, a version and an expiry date. This technical storage respects your preference and is not an advertising cookie. It expires after six months and can also be removed through browser settings.",
+      ],
+      [
+        "Umami analytics",
+        "Analytics is optional. Before you choose and when you select Essential only, the website does not load Umami. Acceptance enables analytics.clmautomation.it. Umami is designed for analytics without tracking cookies; this website nevertheless requires your choice before loading it. Form contents are not sent to Umami.",
+      ],
+      [
+        "Change or withdraw your choice",
+        "Cookie preferences is always available in the footer. Refusing analytics after accepting reloads the page to stop the existing tracker. Refusing does not prevent browsing or making an enquiry. Withdrawal does not automatically erase previously collected service data.",
+      ],
+      [
+        "Other services",
+        "Fonts are hosted with the website. Reviews are retrieved on the server without embedding Google widgets in the browser. External links open only when selected. Hosting infrastructure may use technical security measures; no advertising pixels are configured in the website code.",
+      ],
+    ],
+    "termini-condizioni": [
+      [
+        "Scope",
+        "clmautomation.it presents CLM Automation’s website design, redesign, web development and related services. These terms concern use of the website. Project terms are set out in a specific quote and agreement.",
+      ],
+      [
+        "Enquiries and agreements",
+        "Sending the form requests information; it does not conclude a contract or purchase. Published prices and packages are indicative. Scope, applicable taxes, payment, timing, revisions, hosting, licences and support are specified in the quote.",
+      ],
+      [
+        "Examples and outcomes",
+        "Previews marked demo or concept illustrate possible design directions and do not necessarily represent client work. Commercial outcomes and search rankings are not guaranteed. Reviews reflect their authors’ experiences.",
+      ],
+      [
+        "Content and acceptable use",
+        "Text, design, code and images are protected by their respective owners’ rights. Browsing does not grant a licence for reproduction or commercial use. Do not use the website for unlawful messages, spam or attempted unauthorised access.",
+      ],
+      [
+        "Availability and external links",
+        "The website may change or be temporarily unavailable. External links lead to third-party services. These terms do not limit mandatory user rights or exclude liability that cannot legally be excluded.",
+      ],
+      [
+        "Contact and updates",
+        "For questions, contact c.lomonaco@clmautomation.com. Changes to these pages are published with an update date. Different terms for a specific project must be agreed in writing.",
+      ],
+    ],
+  },
+} as const;
+export function LegalPage({
+  locale,
+  route,
+}: {
+  locale: Locale;
+  route: LegalRoute;
+}) {
+  return (
+    <article className="shell legal-page">
+      <p className="eyebrow">
+        CLM AUTOMATION /{" "}
+        {locale === "it" ? "Informazioni legali" : "Legal information"}
+      </p>
+      <h1>{legalTitle(locale, route)}</h1>
+      <p className="legal-updated">
+        {locale === "it"
+          ? "Aggiornamento: 24 settembre 2026"
+          : "Updated: 24 September 2026"}
+      </p>
+      <nav
+        className="legal-nav"
+        aria-label={locale === "it" ? "Informative" : "Policies"}
+      >
+        {legalRoutes.map((r) => (
+          <Link
+            key={r}
+            href={href(locale, r)}
+            aria-current={r === route ? "page" : undefined}
+          >
+            {legalTitle(locale, r)}
+          </Link>
+        ))}
+      </nav>
+      {copy[locale][route].map(([title, body]) => (
+        <section key={title}>
+          <h2>{title}</h2>
+          <p>{body}</p>
+        </section>
+      ))}
+      <p>
+        <a href={"mailto:" + email}>{email}</a>
+      </p>
+      {route === "privacy" && (
+        <p className="legal-sources">
+          <a
+            href="https://www.netlify.com/gdpr-ccpa/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Netlify — Data Processing Agreement ↗
+          </a>
+          <a
+            href="https://www.garanteprivacy.it/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Garante per la protezione dei dati personali ↗
+          </a>
+        </p>
+      )}
+    </article>
+  );
+}

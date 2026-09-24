@@ -187,7 +187,11 @@
   position: relative;
   min-height: 430px;
   background:
-    linear-gradient(to left, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.55)),
+    linear-gradient(
+      to left,
+      rgba(255, 255, 255, 0.15),
+      rgba(255, 255, 255, 0.55)
+    ),
     url("../images/templates/doctor-main.png") center right / cover no-repeat;
 }
 
@@ -195,7 +199,11 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to left, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.20));
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.2)
+  );
 }
 
 .medical-info-cards {

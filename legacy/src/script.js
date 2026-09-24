@@ -53,7 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "Content-Type": "application/x-www-form-urlencoded",
           },
           body: Object.keys(data)
-            .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+            .map(
+              (key) =>
+                encodeURIComponent(key) + "=" + encodeURIComponent(data[key]),
+            )
             .join("&"),
         });
 
@@ -116,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 <div class="review-meta">${review.publishedAt}</div>
               </article>
-            `
+            `,
           )
           .join("");
 
@@ -127,7 +130,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       })
       .catch((error) => {
-        reviewsSummary.textContent = "Non è stato possibile caricare le recensioni.";
+        reviewsSummary.textContent =
+          "Non è stato possibile caricare le recensioni.";
         reviewsGrid.innerHTML = "";
         console.error(error);
       });

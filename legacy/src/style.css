@@ -32,7 +32,14 @@ html {
 
 body {
   margin: 0;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.65;
@@ -171,7 +178,9 @@ button {
   height: 2px;
   background: var(--title);
   border-radius: 999px;
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
 }
 
 .nav-toggle.is-active span:nth-child(1) {
@@ -192,8 +201,16 @@ button {
   overflow: hidden;
   padding: 5.5rem 0 4rem;
   background:
-    radial-gradient(circle at top left, rgba(31, 79, 255, 0.12), transparent 30%),
-    radial-gradient(circle at 85% 15%, rgba(76, 116, 255, 0.14), transparent 22%),
+    radial-gradient(
+      circle at top left,
+      rgba(31, 79, 255, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(76, 116, 255, 0.14),
+      transparent 22%
+    ),
     linear-gradient(180deg, #f7f9fd 0%, #edf3fb 100%);
 }
 
@@ -201,8 +218,11 @@ button {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent 45%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.4),
+    transparent 45%
+  );
 }
 
 .hero-grid {
@@ -357,7 +377,12 @@ button {
   border: 1px solid transparent;
   font-weight: 700;
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
 }
 
 .btn:hover {
@@ -444,7 +469,11 @@ button {
   padding-top: 4.5rem;
   padding-bottom: 2rem;
   background:
-    radial-gradient(circle at top left, rgba(31, 79, 255, 0.08), transparent 30%),
+    radial-gradient(
+      circle at top left,
+      rgba(31, 79, 255, 0.08),
+      transparent 30%
+    ),
     linear-gradient(180deg, #f7f9fd 0%, #eff4fb 100%);
 }
 
@@ -583,7 +612,10 @@ button {
   border-radius: var(--radius-lg);
   padding: 1.6rem;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
 }
 
 .premium-feature-card:hover,
@@ -658,7 +690,11 @@ button {
   border-radius: 16px;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, rgba(31, 79, 255, 0.12), rgba(76, 116, 255, 0.24));
+  background: linear-gradient(
+    135deg,
+    rgba(31, 79, 255, 0.12),
+    rgba(76, 116, 255, 0.24)
+  );
   color: var(--primary);
   font-weight: 800;
   font-size: 1rem;
@@ -728,7 +764,11 @@ button {
   gap: 1.5rem;
   padding: 2rem;
   background:
-    radial-gradient(circle at top right, rgba(76, 116, 255, 0.22), transparent 25%),
+    radial-gradient(
+      circle at top right,
+      rgba(76, 116, 255, 0.22),
+      transparent 25%
+    ),
     linear-gradient(135deg, #122246 0%, #1639ba 100%);
   color: #fff;
   border-radius: 30px;
@@ -796,7 +836,10 @@ button {
   color: var(--title);
   border-radius: 16px;
   padding: 0.95rem 1rem;
-  transition: border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
 }
 
 .form-group textarea {
@@ -827,7 +870,9 @@ button {
   opacity: 0;
   pointer-events: none;
   transform: translateY(8px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
 .success-toast.show {
@@ -1098,16 +1143,23 @@ button {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at center, rgba(255,255,255,0.06), transparent 60%);
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.06),
+    transparent 60%
+  );
   pointer-events: none;
 }
 
 .home-fullscreen-overlay {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.18) 45%, rgba(0, 0, 0, 0.34) 100%);
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(0, 0, 0, 0.18) 45%,
+    rgba(0, 0, 0, 0.34) 100%
+  );
   pointer-events: none;
 }
 
@@ -1179,7 +1231,9 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.28);
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(5px);
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 
 .home-scroll-down:hover {
@@ -1217,8 +1271,8 @@ button {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
 }
@@ -1268,8 +1322,8 @@ button {
   padding: 1.4rem;
   border-radius: 16px;
 
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
   color: #fff;
   flex-shrink: 0;
@@ -1280,8 +1334,8 @@ button {
 /* hover più elegante */
 .benefit-card-modern:hover {
   transform: translateY(-4px);
-  border-color: rgba(245,196,0,0.4);
-  background: rgba(255,255,255,0.05);
+  border-color: rgba(245, 196, 0, 0.4);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .benefit-card-number {
@@ -1335,7 +1389,7 @@ button {
 .process-subtext {
   margin-top: 0.8rem;
   font-size: 1.05rem;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .process-subtext strong {
@@ -1352,16 +1406,16 @@ button {
   padding: 1.6rem 1.4rem;
   border-radius: 16px;
 
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
   transition: all 0.25s ease;
 }
 
 .process-card-modern:hover {
   transform: translateY(-5px);
-  border-color: rgba(245,196,0,0.4);
-  background: rgba(255,255,255,0.05);
+  border-color: rgba(245, 196, 0, 0.4);
+  background: rgba(255, 255, 255, 0.05);
 }
 .process-icon {
   width: 50px;
@@ -1376,8 +1430,8 @@ button {
 
   margin-bottom: 1rem;
 
-  background: rgba(245,196,0,0.08);
-  border: 1px solid rgba(245,196,0,0.2);
+  background: rgba(245, 196, 0, 0.08);
+  border: 1px solid rgba(245, 196, 0, 0.2);
 }
 .process-card-modern h3 {
   color: #fff;
@@ -1386,7 +1440,7 @@ button {
 }
 
 .process-card-modern p {
-  color: rgba(255,255,255,0.75);
+  color: rgba(255, 255, 255, 0.75);
   font-size: 0.92rem;
   line-height: 1.6;
 }
@@ -1411,8 +1465,8 @@ button {
 .trust-pill-card {
   padding: 1rem 1rem 0.9rem;
   border-radius: 16px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   text-align: center;
 }
 
@@ -1536,7 +1590,7 @@ button {
     right: 0;
     background: #fff;
     padding: 1rem;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
     z-index: 1050;
   }
 
@@ -1623,9 +1677,13 @@ button {
   min-height: 240px;
   padding: 1.4rem;
   border-radius: 24px;
-  background: linear-gradient(180deg, rgba(28, 45, 110, 0.55), rgba(15, 25, 68, 0.55));
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.20);
+  background: linear-gradient(
+    180deg,
+    rgba(28, 45, 110, 0.55),
+    rgba(15, 25, 68, 0.55)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
   flex: 0 0 auto;
   display: flex;
@@ -1704,7 +1762,7 @@ button {
   }
 
   .reviews-slider-wrap::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.18);
+    background: rgba(255, 255, 255, 0.18);
     border-radius: 999px;
   }
 }

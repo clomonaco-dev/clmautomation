@@ -1,29 +1,256 @@
-'use client';
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { href, type Locale } from '@/lib/routes';
+"use client";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { href, type Locale } from "@/lib/routes";
 const slides = {
- it: [
-  ['01 / PRESENTATI BENE','Il primo incontro con un cliente può essere una pagina.','In pochi secondi il tuo sito deve far capire cosa fai, per chi lo fai e perché vale la pena contattarti. Progettiamo una presenza che dia spazio al tuo lavoro, con contenuti chiari e un’identità riconoscibile.','Una presenza che ti rappresenta',['Servizi spiegati con chiarezza','Immagini e testi in equilibrio','Contatti sempre facili da trovare'],'design'],
-  ['02 / ACCOGLI OGNI VISITATORE','Dal piccolo schermo alla grande occasione.','Chi ti cerca può essere in movimento, con un telefono in mano. Menu semplici, testi leggibili e moduli comodi rendono più naturale il passaggio dalla curiosità alla richiesta.','Pensato per essere usato',['Layout che si adattano allo schermo','Percorsi brevi verso le informazioni','Attenzione a velocità e leggibilità'],'struttura'],
-  ['03 / COSTRUIAMO INSIEME','Un percorso chiaro, dalla prima idea alla pubblicazione.','Parliamo della tua attività, organizziamo le pagine e condividiamo una direzione visiva. Puoi seguire lo sviluppo e provare il sito prima della consegna, con obiettivi e attività concordati.','Sai sempre a che punto siamo',['Analisi e preventivo','Proposta visiva e sviluppo','Verifica, pubblicazione e supporto'],'sviluppo'],
-  ['04 / IL PROSSIMO PASSO','Il tuo prossimo sito comincia dal tuo lavoro.','Hai già un sito da rinnovare o parti da zero? Raccontami cosa vuoi presentare, quali clienti vuoi raggiungere e cosa oggi non funziona. Da qui definiamo una soluzione proporzionata alle tue esigenze.','Porta la tua idea, le diamo struttura',['Siti vetrina e restyling','Soluzioni su misura','Italiano, inglese e nuovi mercati'],'pubblicazione']
- ],
- en: [
-  ['01 / MAKE AN INTRODUCTION','Your first client meeting could be a page.','Within seconds, your website should explain what you do, who you help and why to get in touch. We give your work space through clear content and a recognisable identity.','A presence that represents you',['Clearly explained services','Balanced images and copy','Easy-to-find contact details'],'design'],
-  ['02 / WELCOME EVERY VISITOR','From a small screen to a new opportunity.','Your next visitor may be on the move, phone in hand. Simple navigation, readable copy and comfortable forms make the journey from interest to enquiry more natural.','Built to be used',['Layouts that adapt to the screen','Direct paths to useful information','Care for speed and readability'],'struttura'],
-  ['03 / BUILD TOGETHER','A clear journey from the first idea to launch.','We discuss your business, organise the pages and share a visual direction. Follow development and try the website before handover, with agreed goals and activities.','Know where your project stands',['Discovery and quote','Design direction and development','Review, launch and support'],'sviluppo'],
-  ['04 / YOUR NEXT STEP','Your next website starts with your work.','Refreshing an existing site or starting from scratch? Tell me what you want to present, who you want to reach and what is not working today. We can define a solution that fits your needs.','Bring your idea, we give it structure',['Business websites and redesign','Custom solutions','Italian, English and new markets'],'pubblicazione']
- ]
+  it: [
+    [
+      "01 / PRESENTATI BENE",
+      "Il primo incontro con un cliente può essere una pagina.",
+      "In pochi secondi il tuo sito deve far capire cosa fai, per chi lo fai e perché vale la pena contattarti. Progettiamo una presenza che dia spazio al tuo lavoro, con contenuti chiari e un’identità riconoscibile.",
+      "Una presenza che ti rappresenta",
+      [
+        "Servizi spiegati con chiarezza",
+        "Immagini e testi in equilibrio",
+        "Contatti sempre facili da trovare",
+      ],
+      "design",
+    ],
+    [
+      "02 / ACCOGLI OGNI VISITATORE",
+      "Dal piccolo schermo alla grande occasione.",
+      "Chi ti cerca può essere in movimento, con un telefono in mano. Menu semplici, testi leggibili e moduli comodi rendono più naturale il passaggio dalla curiosità alla richiesta.",
+      "Pensato per essere usato",
+      [
+        "Layout che si adattano allo schermo",
+        "Percorsi brevi verso le informazioni",
+        "Attenzione a velocità e leggibilità",
+      ],
+      "struttura",
+    ],
+    [
+      "03 / COSTRUIAMO INSIEME",
+      "Un percorso chiaro, dalla prima idea alla pubblicazione.",
+      "Parliamo della tua attività, organizziamo le pagine e condividiamo una direzione visiva. Puoi seguire lo sviluppo e provare il sito prima della consegna, con obiettivi e attività concordati.",
+      "Sai sempre a che punto siamo",
+      [
+        "Analisi e preventivo",
+        "Proposta visiva e sviluppo",
+        "Verifica, pubblicazione e supporto",
+      ],
+      "sviluppo",
+    ],
+    [
+      "04 / IL PROSSIMO PASSO",
+      "Il tuo prossimo sito comincia dal tuo lavoro.",
+      "Hai già un sito da rinnovare o parti da zero? Raccontami cosa vuoi presentare, quali clienti vuoi raggiungere e cosa oggi non funziona. Da qui definiamo una soluzione proporzionata alle tue esigenze.",
+      "Porta la tua idea, le diamo struttura",
+      [
+        "Siti vetrina e restyling",
+        "Soluzioni su misura",
+        "Italiano, inglese e nuovi mercati",
+      ],
+      "pubblicazione",
+    ],
+  ],
+  en: [
+    [
+      "01 / MAKE AN INTRODUCTION",
+      "Your first client meeting could be a page.",
+      "Within seconds, your website should explain what you do, who you help and why to get in touch. We give your work space through clear content and a recognisable identity.",
+      "A presence that represents you",
+      [
+        "Clearly explained services",
+        "Balanced images and copy",
+        "Easy-to-find contact details",
+      ],
+      "design",
+    ],
+    [
+      "02 / WELCOME EVERY VISITOR",
+      "From a small screen to a new opportunity.",
+      "Your next visitor may be on the move, phone in hand. Simple navigation, readable copy and comfortable forms make the journey from interest to enquiry more natural.",
+      "Built to be used",
+      [
+        "Layouts that adapt to the screen",
+        "Direct paths to useful information",
+        "Care for speed and readability",
+      ],
+      "struttura",
+    ],
+    [
+      "03 / BUILD TOGETHER",
+      "A clear journey from the first idea to launch.",
+      "We discuss your business, organise the pages and share a visual direction. Follow development and try the website before handover, with agreed goals and activities.",
+      "Know where your project stands",
+      [
+        "Discovery and quote",
+        "Design direction and development",
+        "Review, launch and support",
+      ],
+      "sviluppo",
+    ],
+    [
+      "04 / YOUR NEXT STEP",
+      "Your next website starts with your work.",
+      "Refreshing an existing site or starting from scratch? Tell me what you want to present, who you want to reach and what is not working today. We can define a solution that fits your needs.",
+      "Bring your idea, we give it structure",
+      [
+        "Business websites and redesign",
+        "Custom solutions",
+        "Italian, English and new markets",
+      ],
+      "pubblicazione",
+    ],
+  ],
 } as const;
-export function Presentation({locale}:{locale:Locale}) {
- const [active,setActive]=useState(0); const [playing,setPlaying]=useState(false); const [paused,setPaused]=useState(false); const [reduced,setReduced]=useState(true);
- useEffect(()=>{const media=matchMedia('(prefers-reduced-motion: reduce)'); const update=()=>{setReduced(media.matches);if(media.matches)setPlaying(false);};update();media.addEventListener('change',update);return()=>media.removeEventListener('change',update);},[]);
- useEffect(()=>{if(!playing||paused||reduced)return;const timer=setInterval(()=>setActive(i=>(i+1)%4),9000);return()=>clearInterval(timer);},[playing,paused,reduced]);
- const en=locale==='en'; const select=(i:number)=>{setActive((i+4)%4);setPlaying(false);};
- return <section className="presentation section" aria-roledescription={en?'carousel':'carosello'} aria-label={en?'Meet CLM Automation':'Scopri CLM Automation'} onMouseEnter={()=>setPaused(true)} onMouseLeave={()=>setPaused(false)} onFocusCapture={()=>setPaused(true)} onBlurCapture={e=>{if(!e.currentTarget.contains(e.relatedTarget))setPaused(false);}}>
-  <div className="shell"><div className="section-heading"><div><p className="eyebrow">CLM AUTOMATION / DIGITAL STUDIO</p><h2>{en?'More than an online business card.':'Più di un biglietto da visita online.'}</h2></div><p>{en?'Explore how your website can work for your business.':'Scopri come il tuo sito può lavorare per la tua attività.'}</p></div>
-  <div className="presentation-stage" aria-live={playing?'off':'polite'}>{slides[locale].map((s,i)=><div key={i} className={'presentation-slide '+(i===active?'is-active':'')} aria-hidden={i!==active} inert={i!==active} role="group" aria-roledescription="slide" aria-label={(i+1)+' / 4'}><div className="presentation-copy"><p className="eyebrow">{s[0]}</p><h3>{s[1]}</h3><p>{s[2]}</p><Link className="text-link" href={href(locale,i===3?'contatti':'metodo')}>{en?(i===3?'Tell me about your project':'Discover the process'):(i===3?'Raccontami il tuo progetto':'Scopri come lavoriamo')} ↗</Link></div><div className="presentation-visual"><img src={'/images/optimized/metodo-'+s[5]+'.webp'} alt="" loading="lazy"/><div><h4>{s[3]}</h4><ul>{s[4].map(f=><li key={f}><span aria-hidden="true">✓</span> {f}</li>)}</ul></div></div></div>)}</div>
-  <div className="presentation-controls"><div className="slide-dots">{slides[locale].map((s,i)=><button key={i} onClick={()=>select(i)} aria-label={(en?'Show slide ':'Mostra diapositiva ')+(i+1)} aria-current={i===active?'true':undefined}><span>0{i+1}</span></button>)}</div><div><button onClick={()=>select(active-1)} aria-label={en?'Previous slide':'Diapositiva precedente'}>←</button><button onClick={()=>select(active+1)} aria-label={en?'Next slide':'Diapositiva successiva'}>→</button>{!reduced&&<button className="play-slides" onClick={()=>setPlaying(!playing)} aria-pressed={playing}>{playing?(en?'Pause':'Pausa'):(en?'Play':'Riproduci')}</button>}</div></div></div>
- </section>;
+export function Presentation({ locale }: { locale: Locale }) {
+  const [active, setActive] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const [reduced, setReduced] = useState(true);
+  useEffect(() => {
+    const media = matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => {
+      setReduced(media.matches);
+      if (media.matches) setPlaying(false);
+    };
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+  useEffect(() => {
+    if (!playing || paused || reduced) return;
+    const timer = setInterval(() => setActive((i) => (i + 1) % 4), 9000);
+    return () => clearInterval(timer);
+  }, [playing, paused, reduced]);
+  const en = locale === "en";
+  const select = (i: number) => {
+    setActive((i + 4) % 4);
+    setPlaying(false);
+  };
+  return (
+    <section
+      className="presentation section"
+      aria-roledescription={en ? "carousel" : "carosello"}
+      aria-label={en ? "Meet CLM Automation" : "Scopri CLM Automation"}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) setPaused(false);
+      }}
+    >
+      <div className="shell">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">CLM AUTOMATION / DIGITAL STUDIO</p>
+            <h2>
+              {en
+                ? "More than an online business card."
+                : "Più di un biglietto da visita online."}
+            </h2>
+          </div>
+          <p>
+            {en
+              ? "Explore how your website can work for your business."
+              : "Scopri come il tuo sito può lavorare per la tua attività."}
+          </p>
+        </div>
+        <div
+          className="presentation-stage"
+          aria-live={playing ? "off" : "polite"}
+        >
+          {slides[locale].map((s, i) => (
+            <div
+              key={i}
+              className={
+                "presentation-slide " + (i === active ? "is-active" : "")
+              }
+              aria-hidden={i !== active}
+              inert={i !== active}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={i + 1 + " / 4"}
+            >
+              <div className="presentation-copy">
+                <p className="eyebrow">{s[0]}</p>
+                <h3>{s[1]}</h3>
+                <p>{s[2]}</p>
+                <Link
+                  className="text-link"
+                  href={href(locale, i === 3 ? "contatti" : "metodo")}
+                >
+                  {en
+                    ? i === 3
+                      ? "Tell me about your project"
+                      : "Discover the process"
+                    : i === 3
+                      ? "Raccontami il tuo progetto"
+                      : "Scopri come lavoriamo"}{" "}
+                  ↗
+                </Link>
+              </div>
+              <div className="presentation-visual">
+                <img
+                  src={"/images/optimized/metodo-" + s[5] + ".webp"}
+                  alt=""
+                  loading="lazy"
+                />
+                <div>
+                  <h4>{s[3]}</h4>
+                  <ul>
+                    {s[4].map((f) => (
+                      <li key={f}>
+                        <span aria-hidden="true">✓</span> {f}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="presentation-controls">
+          <div className="slide-dots">
+            {slides[locale].map((s, i) => (
+              <button
+                key={i}
+                onClick={() => select(i)}
+                aria-label={
+                  (en ? "Show slide " : "Mostra diapositiva ") + (i + 1)
+                }
+                aria-current={i === active ? "true" : undefined}
+              >
+                <span>0{i + 1}</span>
+              </button>
+            ))}
+          </div>
+          <div>
+            <button
+              onClick={() => select(active - 1)}
+              aria-label={en ? "Previous slide" : "Diapositiva precedente"}
+            >
+              ←
+            </button>
+            <button
+              onClick={() => select(active + 1)}
+              aria-label={en ? "Next slide" : "Diapositiva successiva"}
+            >
+              →
+            </button>
+            {!reduced && (
+              <button
+                className="play-slides"
+                onClick={() => setPlaying(!playing)}
+                aria-pressed={playing}
+              >
+                {playing ? (en ? "Pause" : "Pausa") : en ? "Play" : "Riproduci"}
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

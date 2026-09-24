@@ -8,7 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const singlePreviewImage = document.getElementById("singlePreviewImage");
   const thumbs = document.querySelectorAll(".showcase-thumb");
 
-  if (!compareBox || !compareBefore || !compareAfter || !compareHandle || !thumbs.length) {
+  if (
+    !compareBox ||
+    !compareBefore ||
+    !compareAfter ||
+    !compareHandle ||
+    !thumbs.length
+  ) {
     return;
   }
 
@@ -77,18 +83,26 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Touch
-  compareHandle.addEventListener("touchstart", () => {
-    isDragging = true;
-  }, { passive: true });
+  compareHandle.addEventListener(
+    "touchstart",
+    () => {
+      isDragging = true;
+    },
+    { passive: true },
+  );
 
   window.addEventListener("touchend", () => {
     isDragging = false;
   });
 
-  window.addEventListener("touchmove", (e) => {
-    if (!isDragging || !e.touches.length) return;
-    setCompareFromClientX(e.touches[0].clientX);
-  }, { passive: true });
+  window.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!isDragging || !e.touches.length) return;
+      setCompareFromClientX(e.touches[0].clientX);
+    },
+    { passive: true },
+  );
 
   window.addEventListener("resize", () => {
     if (compareFrame.style.display !== "none") {

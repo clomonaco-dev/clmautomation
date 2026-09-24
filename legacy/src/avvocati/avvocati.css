@@ -1,7 +1,11 @@
 .legal-template-showcase {
   padding: 70px 20px 90px;
   background:
-    radial-gradient(circle at top left, rgba(193, 154, 107, 0.08), transparent 30%),
+    radial-gradient(
+      circle at top left,
+      rgba(193, 154, 107, 0.08),
+      transparent 30%
+    ),
     linear-gradient(180deg, #f8f6f2 0%, #f1ece4 100%);
 }
 
@@ -173,7 +177,9 @@
   text-decoration: none;
   font-weight: 700;
   box-shadow: 0 14px 34px rgba(139, 106, 67, 0.28);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .legal-contact-btn:hover {
@@ -194,7 +200,9 @@
   background:
     linear-gradient(rgba(31, 26, 23, 0.12), rgba(31, 26, 23, 0.12)),
     url("../images/templates/legal-hero.jpg") center/cover no-repeat;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.18), 0 24px 54px rgba(31, 26, 23, 0.14);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 24px 54px rgba(31, 26, 23, 0.14);
 }
 
 .legal-info-cards {
@@ -392,8 +400,11 @@
   display: grid;
   place-items: center;
   text-align: center;
-  background:
-    linear-gradient(135deg, rgba(193, 154, 107, 0.12), rgba(139, 106, 67, 0.08));
+  background: linear-gradient(
+    135deg,
+    rgba(193, 154, 107, 0.12),
+    rgba(139, 106, 67, 0.08)
+  );
   color: #6f5a43;
   font-weight: 700;
   border: 1px dashed rgba(139, 106, 67, 0.25);
@@ -447,7 +458,9 @@
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 14px 34px rgba(139, 106, 67, 0.25);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .legal-submit-btn:hover {
@@ -531,7 +544,7 @@
 .legal-template-cta p {
   margin: 0;
   max-width: 700px;
-  color: rgba(255,255,255,0.82);
+  color: rgba(255, 255, 255, 0.82);
   line-height: 1.75;
 }
 
@@ -546,7 +559,7 @@
   color: #1f1a17;
   text-decoration: none;
   font-weight: 800;
-  box-shadow: 0 16px 34px rgba(0,0,0,0.22);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22);
   transition: transform 0.25s ease;
 }
 

@@ -1,7 +1,11 @@
 .pro-template-showcase {
   padding: 70px 20px 90px;
   background:
-    radial-gradient(circle at top left, rgba(61, 107, 181, 0.08), transparent 24%),
+    radial-gradient(
+      circle at top left,
+      rgba(61, 107, 181, 0.08),
+      transparent 24%
+    ),
     linear-gradient(180deg, #f5f8fc 0%, #eef3f8 100%);
 }
 
@@ -249,7 +253,9 @@
   background:
     linear-gradient(rgba(19, 32, 51, 0.12), rgba(19, 32, 51, 0.12)),
     url("../images/templates/professionisti-hero.jpg") center/cover no-repeat;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.18), 0 24px 54px rgba(19, 32, 51, 0.12);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 24px 54px rgba(19, 32, 51, 0.12);
 }
 
 .pro-visual-caption {
@@ -524,7 +530,9 @@
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 14px 34px rgba(45, 95, 159, 0.24);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .pro-submit-btn:hover {
@@ -587,7 +595,7 @@
 .pro-template-cta p {
   margin: 0;
   max-width: 700px;
-  color: rgba(255,255,255,0.82);
+  color: rgba(255, 255, 255, 0.82);
   line-height: 1.75;
 }
 
@@ -602,7 +610,7 @@
   color: #132033;
   text-decoration: none;
   font-weight: 800;
-  box-shadow: 0 16px 34px rgba(0,0,0,0.18);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
   transition: transform 0.25s ease;
 }
 

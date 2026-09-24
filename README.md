@@ -65,14 +65,13 @@ Riferimenti: [Next.js static exports](https://nextjs.org/docs/app/guides/static-
 
 Il confronto con legacy/src conferma 9 pagine HTML e 38 immagini originali. Tutte le immagini sono mantenute byte per byte in public/images e in out/images, agli stessi indirizzi. Le 3 anteprime WebP in images/optimized sono aggiuntive. Rimangono disponibili anche i 2 favicon e i 2 PDF originali. Il test legacy-compatibility.test.mjs ricava l'inventario dal legacy e controlla percorsi, hash SHA-256, canonical e sitemap a ogni esecuzione di npm test dopo la build. La voce /images/ nel vecchio sitemap era una cartella di risorse, non una decima pagina HTML.
 
-
-
 ## Presentazione e approfondimenti
+
 La home include una presentazione a quattro scene, con dissolvenze, comandi manuali e riproduzione opzionale. La preferenza di movimento ridotto disattiva animazioni e riproduzione automatica. Otto pagine aggiuntive per lingua approfondiscono sei servizi, progetti e recensioni; gli URL originali restano invariati.
 
 Le recensioni sono caricate dall’endpoint Netlify originale. In anteprima locale e durante lo sviluppo il server inoltra la richiesta al sito pubblico, senza esporre credenziali. In produzione restano necessarie GOOGLE_PLACES_API_KEY e GOOGLE_PLACE_ID su Netlify. Il servizio Google può restituire un sottoinsieme delle recensioni: il totale è quello del profilo, tutte le card ricevute vengono mostrate.
 
-
 ## Informative e consenso
+
 Umami usa URL e website-id originali del legacy, con consenso preventivo, rifiuto equivalente, revoca tramite ricaricamento e preferenza locale valida sei mesi. Le informative descrivono l’integrazione reale; prima della pubblicazione validare tempi effettivi di conservazione su Netlify e Umami, collocazione hosting analytics e garanzie dei trasferimenti. Il codice non configura la retention nei servizi esterni. Nessuna certificazione di conformità GDPR è implicita.
 Il form conserva nome contatti e la definizione statica public/__forms.html, con tutti i campi corrispondenti al POST. Su Netlify la rilevazione Forms deve essere attiva: dopo il deploy verificare la presenza del modulo nella dashboard. Nessun consenso marketing viene richiesto per una semplice richiesta di preventivo.
