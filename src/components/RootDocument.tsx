@@ -24,7 +24,17 @@ export function RootDocument({
     availableLanguage: ["Italian", "English"],
   };
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script
+          // Enables reveal animations before first paint; falls back to
+          // static content if the motion layer does not start.
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('motion');setTimeout(function(){if(!d.classList.contains('motion-live'))d.classList.remove('motion')},3000)})()",
+          }}
+        />
+      </head>
       <body>
         {children}
         <script

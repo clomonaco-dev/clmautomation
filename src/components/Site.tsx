@@ -2,6 +2,9 @@ import { LegalPage, legalRoutes, legalTitle } from "./LegalPage";
 import { solutions, solutionRoutes } from "@/lib/solutions";
 import { Presentation } from "./Presentation";
 import { BuildStory } from "./BuildStory";
+import { Motion } from "./Motion";
+import { Timeline } from "./Timeline";
+import { IntroArt, type ArtVariant } from "./IntroArt";
 import { NavigationReset } from "./NavigationReset";
 import Link from "next/link";
 import Image from "next/image";
@@ -43,19 +46,26 @@ function Intro({
   label,
   title,
   text,
+  art,
+  locale,
 }: {
   label: string;
   title: string;
   text: string;
+  art?: ArtVariant;
+  locale?: Locale;
 }) {
   return (
-    <section className="shell page-intro">
-      <p className="eyebrow">
-        <span className="status-dot" />
-        {label}
-      </p>
-      <h1>{title}</h1>
-      <p className="intro-text">{text}</p>
+    <section className={`shell page-intro${art ? " has-art" : ""}`}>
+      <div className="intro-copy">
+        <p className="eyebrow">
+          <span className="status-dot" />
+          {label}
+        </p>
+        <h1>{title}</h1>
+        <p className="intro-text">{text}</p>
+      </div>
+      {art && locale && <IntroArt variant={art} locale={locale} />}
     </section>
   );
 }
@@ -204,8 +214,28 @@ function Examples({ locale }: { locale: Locale }) {
     </section>
   );
 }
+const deliverables = {
+  it: [
+    "Obiettivi e preventivo",
+    "Mappa delle pagine e direzione visiva",
+    "Sito da provare e revisionare",
+    "Pubblicazione e consegna",
+  ],
+  en: [
+    "Goals and project quote",
+    "Page structure and visual direction",
+    "A website to test and review",
+    "Launch and handover",
+  ],
+};
 function Process({ locale, full = false }: { locale: Locale; full?: boolean }) {
   const t = dictionary(locale);
+  if (full)
+    return (
+      <section className="shell section process process-full">
+        <Timeline steps={t.steps} deliverables={deliverables[locale]} />
+      </section>
+    );
   return (
     <section className="shell section process">
       <div className="section-heading">
@@ -307,7 +337,13 @@ function About({ locale }: { locale: Locale }) {
   const t = dictionary(locale);
   return (
     <>
-      <Intro label={t.aboutLabel} title={t.aboutTitle} text={t.aboutIntro} />
+      <Intro
+        label={t.aboutLabel}
+        title={t.aboutTitle}
+        text={t.aboutIntro}
+        art="about"
+        locale={locale}
+      />
       <section className="shell section section-after-intro about-layout">
         <div className="about-poster">
           <span className="eyebrow">CLM AUTOMATION</span>
@@ -332,6 +368,50 @@ function About({ locale }: { locale: Locale }) {
             </article>
           ))}
         </div>
+      </section>
+      <section className="shell stats" aria-label={t.aboutLabel}>
+        {(locale === "it"
+          ? [
+              [10, "+", "anni di sviluppo software"],
+              [
+                3,
+                "",
+                "settori ad alta affidabilità: automotive, aerospazio, difesa",
+              ],
+              [
+                1,
+                "",
+                "interlocutore diretto, dalla prima domanda alla consegna",
+              ],
+              [
+                100,
+                "%",
+                "del sito di tua proprietà, senza abbonamenti obbligatori",
+              ],
+            ]
+          : [
+              [10, "+", "years of software development"],
+              [
+                3,
+                "",
+                "high-reliability sectors: automotive, aerospace, defence",
+              ],
+              [
+                1,
+                "",
+                "direct point of contact, from first question to handover",
+              ],
+              [100, "%", "of the website is yours, no mandatory subscription"],
+            ]
+        ).map(([n, suffix, label]) => (
+          <div key={String(label)}>
+            <strong data-count={n} data-suffix={suffix}>
+              {n}
+              {suffix}
+            </strong>
+            <span>{label}</span>
+          </div>
+        ))}
       </section>
       <section className="shell section documents">
         <div>
@@ -384,6 +464,8 @@ function Sector({ locale, route }: { locale: Locale; route: Route }) {
         label={`${t.concept} / ${sector[1]}`}
         title={sector[2]}
         text={sector[3]}
+        art="projects"
+        locale={locale}
       />
       <section className="shell section section-after-intro">
         <div className="sector-preview">
@@ -431,6 +513,8 @@ function Contact({ locale }: { locale: Locale }) {
         label={t.contactLabel}
         title={t.contactTitle}
         text={t.contactIntro}
+        art="contact"
+        locale={locale}
       />
       <section className="shell section section-after-intro contact-layout">
         <div className="contact-info">
@@ -482,6 +566,20 @@ function CallToAction({ locale }: { locale: Locale }) {
   const t = dictionary(locale);
   return (
     <section className="cta">
+      <div className="marquee" aria-hidden="true">
+        <div className="marquee-track">
+          {[0, 1].map((copy) => (
+            <span key={copy}>
+              {t.services.map(([title]) => (
+                <span key={title}>
+                  {title}
+                  <i>✳</i>
+                </span>
+              ))}
+            </span>
+          ))}
+        </div>
+      </div>
       <div className="shell cta-inner">
         <div>
           <p className="eyebrow">{t.ctaLabel}</p>
@@ -544,6 +642,9 @@ function Footer({ locale }: { locale: Locale }) {
             </a>
           </div>
         </div>
+        <div className="footer-wordmark" aria-hidden="true">
+          clm<span>.</span>
+        </div>
         <div className="footer-bottom">
           <span>
             © {new Date().getFullYear()} CLM Automation. {t.rights}
@@ -571,6 +672,7 @@ export function Site({ locale, route }: { locale: Locale; route: Route }) {
       </a>
       <Header locale={locale} route={route} />
       <NavigationReset />
+      <Motion />
       <main id="main">
         {route === "" && (
           <>
@@ -636,6 +738,8 @@ export function Site({ locale, route }: { locale: Locale; route: Route }) {
               label={t.nav[2]}
               title={t.servicesTitle}
               text={t.servicesIntro}
+              art="services"
+              locale={locale}
             />
             <Services locale={locale} full />
             <Examples locale={locale} />
@@ -649,6 +753,8 @@ export function Site({ locale, route }: { locale: Locale; route: Route }) {
               label={t.packageLabel}
               title={t.packageTitle}
               text={t.packageIntro}
+              art="packages"
+              locale={locale}
             />
             <Packages locale={locale} />
             <Faq locale={locale} />
@@ -660,6 +766,8 @@ export function Site({ locale, route }: { locale: Locale; route: Route }) {
               label={t.nav[4]}
               title={t.methodTitle}
               text={t.methodIntro}
+              art="method"
+              locale={locale}
             />
             <Process locale={locale} full />
             <Faq locale={locale} />
@@ -675,6 +783,8 @@ export function Site({ locale, route }: { locale: Locale; route: Route }) {
                   : "A different website for every profession."
               }
               text={t.examplesIntro}
+              art="projects"
+              locale={locale}
             />
             <Examples locale={locale} />
             <Process locale={locale} />
@@ -690,6 +800,8 @@ export function Site({ locale, route }: { locale: Locale; route: Route }) {
                   ? "Le esperienze condivise su Google da chi ha lavorato con CLM Automation. Recensioni originali, consultabili anche sul profilo Google."
                   : "Experiences shared on Google by people who have worked with CLM Automation. Original reviews, also available on our Google profile."
               }
+              art="reviews"
+              locale={locale}
             />
             <Reviews locale={locale} />
             <Faq locale={locale} />
@@ -718,6 +830,14 @@ export function Site({ locale, route }: { locale: Locale; route: Route }) {
   );
 }
 
+const solutionArt: Partial<Record<Route, ArtVariant>> = {
+  "siti-web": "projects",
+  "restyling-siti-web": "restyle",
+  "sviluppo-web": "code",
+  "seo-performance": "seo",
+  "siti-multilingua": "globe",
+  "assistenza-web": "support",
+};
 function Solution({ locale, route }: { locale: Locale; route: Route }) {
   const s = solutions(locale).find((s) => s.route === route)!;
   const en = locale === "en";
@@ -727,6 +847,8 @@ function Solution({ locale, route }: { locale: Locale; route: Route }) {
         label={en ? "Our services" : "I nostri servizi"}
         title={s.title}
         text={s.intro}
+        art={solutionArt[s.route] ?? "projects"}
+        locale={locale}
       />
       <section className="shell section section-after-intro solution-layout">
         <div>
