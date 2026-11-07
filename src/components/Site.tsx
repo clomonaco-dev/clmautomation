@@ -1,6 +1,7 @@
 import { LegalPage, legalRoutes, legalTitle } from "./LegalPage";
 import { solutions, solutionRoutes } from "@/lib/solutions";
 import { Presentation } from "./Presentation";
+import { BuildStory } from "./BuildStory";
 import { NavigationReset } from "./NavigationReset";
 import Link from "next/link";
 import Image from "next/image";
@@ -612,6 +613,7 @@ export function Site({ locale, route }: { locale: Locale; route: Route }) {
                 </span>
               </div>
             </div>
+            <BuildStory locale={locale} />
             <Presentation locale={locale} />
             <Services locale={locale} />
             <Examples locale={locale} />
