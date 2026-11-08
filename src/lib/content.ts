@@ -102,52 +102,13 @@ export const content = {
     qualification: "Abilitazione professionale",
     certificates: "Certificazioni tecniche",
     packageLabel: "Un punto di partenza, non un limite",
-    packageTitle: "La soluzione giusta per la tua prossima fase.",
+    packageTitle: "Un listino chiaro per ogni tipo di progetto.",
     packageIntro:
-      "Tre livelli di progetto, con un preventivo definito sulle tue esigenze. I prezzi di partenza riprendono le proposte CLM Automation.",
+      "Siti vetrina, e-commerce, app mobile e gestionali: scegli la tipologia e confronta tre livelli, con prezzi di partenza, tempi indicativi e differenze voce per voce.",
     from: "Da",
     quote: "Richiedi un preventivo",
     priceNote:
       "Prezzi indicativi di partenza. Ambito, costi di servizi esterni e condizioni economiche vengono precisati nel preventivo.",
-    featured: "Per una presenza completa",
-    plans: [
-      [
-        "Base",
-        "600",
-        "Per iniziare, con le idee chiare.",
-        [
-          "Sito one page",
-          "Design responsive",
-          "Presentazione dei servizi",
-          "Email, telefono e WhatsApp",
-          "Pubblicazione online",
-        ],
-      ],
-      [
-        "Standard",
-        "1.200",
-        "Più spazio per raccontare la tua attività.",
-        [
-          "Sito multipagina",
-          "Design personalizzato",
-          "Modulo contatti e indicazioni sede",
-          "SEO di base on-page",
-          "Collegamento del dominio",
-        ],
-      ],
-      [
-        "Premium",
-        "2.000",
-        "Un progetto più curato, pronto a crescere.",
-        [
-          "Fino a 5 pagine",
-          "Design premium su misura",
-          "Struttura e revisione dei contenuti",
-          "Ottimizzazione SEO on-page",
-          "3 mesi di assistenza inclusi",
-        ],
-      ],
-    ],
     faqTitle: "Le domande giuste, prima di iniziare.",
     faq: [
       [
@@ -324,52 +285,13 @@ export const content = {
     qualification: "Professional qualification",
     certificates: "Technical certifications",
     packageLabel: "A starting point, not a limit",
-    packageTitle: "The right website for your next chapter.",
+    packageTitle: "A clear price list for every kind of project.",
     packageIntro:
-      "Three project levels, with a quote tailored to your needs. Starting prices reflect CLM Automation’s existing offers.",
+      "Business websites, online stores, mobile apps and management software: pick a type and compare three levels, with starting prices, indicative timing and line-by-line differences.",
     from: "From",
     quote: "Request a quote",
     priceNote:
       "Indicative starting prices. Scope, external service costs and commercial terms are specified in your quote.",
-    featured: "For a complete online presence",
-    plans: [
-      [
-        "Base",
-        "600",
-        "Start with a clear, focused presence.",
-        [
-          "One-page website",
-          "Responsive design",
-          "Service presentation",
-          "Email, phone and WhatsApp",
-          "Website launch",
-        ],
-      ],
-      [
-        "Standard",
-        "1,200",
-        "More room to tell your business story.",
-        [
-          "Multi-page website",
-          "Custom design",
-          "Contact form and location details",
-          "Basic on-page SEO",
-          "Domain connection",
-        ],
-      ],
-      [
-        "Premium",
-        "2,000",
-        "A tailored project, ready to grow.",
-        [
-          "Up to 5 pages",
-          "Premium custom design",
-          "Content structure and review",
-          "On-page SEO optimisation",
-          "3 months of support included",
-        ],
-      ],
-    ],
     faqTitle: "Good questions, before we begin.",
     faq: [
       [

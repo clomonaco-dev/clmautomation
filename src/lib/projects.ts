@@ -2,7 +2,13 @@ import type { Locale, Route } from "./routes";
 
 /* Transversal project types shown in "Projects" and in navigation. */
 export type SceneKey =
-  "vetrina" | "shop" | "dashboard" | "webapp" | "landing" | "restyle";
+  | "vetrina"
+  | "shop"
+  | "dashboard"
+  | "webapp"
+  | "landing"
+  | "restyle"
+  | "mobile";
 
 type ProjectCopy = { name: string; text: string; tags: string[] };
 

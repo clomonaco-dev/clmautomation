@@ -6,6 +6,7 @@ import { Motion } from "./Motion";
 import { Timeline } from "./Timeline";
 import { IntroArt, type ArtVariant } from "./IntroArt";
 import { Projects } from "./Projects";
+import { Pricing } from "./Pricing";
 import { ProjectScene } from "./ProjectScene";
 import { Pipeline } from "./Pipeline";
 import { projects, sceneFor, type SceneKey } from "@/lib/projects";
@@ -237,71 +238,6 @@ function Process({ locale, full = false }: { locale: Locale; full?: boolean }) {
             )}
           </article>
         ))}
-      </div>
-    </section>
-  );
-}
-function Packages({ locale }: { locale: Locale }) {
-  const t = dictionary(locale);
-  return (
-    <section className="shell section section-after-intro">
-      <div className="pricing-grid">
-        {t.plans.map(([name, price, description, features], index) => (
-          <article
-            key={name}
-            className={`pricing-card ${index === 1 ? "featured" : ""}`}
-          >
-            {index === 1 && <span className="plan-badge">{t.featured}</span>}
-            <p className="eyebrow">{name}</p>
-            <h2>
-              <small>{t.from}</small> €{price}
-            </h2>
-            <p>{description}</p>
-            <ul>
-              {features.map((item) => (
-                <li key={item}>
-                  <span aria-hidden="true">✓</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <Button locale={locale} outline={index !== 1}>
-              {t.quote}
-            </Button>
-          </article>
-        ))}
-      </div>
-      <p className="price-note">{t.priceNote}</p>
-      <div className="custom-band">
-        <div>
-          <p className="eyebrow">
-            {locale === "it" ? "Oltre i pacchetti" : "Beyond the packages"}
-          </p>
-          <h2>
-            {locale === "it"
-              ? "E-commerce, gestionali e web app su preventivo."
-              : "Online stores, management software and web apps, quoted to scope."}
-          </h2>
-          <p>
-            {locale === "it"
-              ? "Progetti con funzionalità specifiche partono da un’analisi dei requisiti: definiamo insieme fasi, priorità e budget."
-              : "Projects with specific features start with a requirements review: together we define phases, priorities and budget."}
-          </p>
-        </div>
-        <div className="custom-links">
-          {projects(locale)
-            .filter((p) =>
-              ["e-commerce", "gestionali", "web-app", "landing-page"].includes(
-                p.route,
-              ),
-            )
-            .map((p) => (
-              <Link key={p.route} href={href(locale, p.route)}>
-                {p.name}
-                <Arrow />
-              </Link>
-            ))}
-        </div>
       </div>
     </section>
   );
@@ -701,7 +637,7 @@ export function Site({ locale, route }: { locale: Locale; route: Route }) {
               art="packages"
               locale={locale}
             />
-            <Packages locale={locale} />
+            <Pricing locale={locale} />
             <Faq locale={locale} />
           </>
         )}
@@ -772,6 +708,11 @@ export function Site({ locale, route }: { locale: Locale; route: Route }) {
   );
 }
 
+const priceAnchor: Partial<Record<Route, string>> = {
+  "siti-web": "siti-vetrina",
+  "e-commerce": "e-commerce",
+  gestionali: "gestionali",
+};
 const solutionArt: Partial<Record<Route, ArtVariant>> = {
   "siti-web": "projects",
   "restyling-siti-web": "restyle",
@@ -817,9 +758,20 @@ function Solution({ locale, route }: { locale: Locale; route: Route }) {
             ))}
           </ul>
           <p className="solution-body">{s.outcome}</p>
-          <Button locale={locale}>
-            {en ? "Discuss your project" : "Parliamo del tuo progetto"}
-          </Button>
+          <div className="actions">
+            <Button locale={locale}>
+              {en ? "Discuss your project" : "Parliamo del tuo progetto"}
+            </Button>
+            {priceAnchor[s.route] && (
+              <Link
+                className="hero-secondary"
+                href={`${href(locale, "pacchetti")}#${priceAnchor[s.route]}`}
+              >
+                {en ? "See the packages" : "Vedi i pacchetti"}
+                <Arrow />
+              </Link>
+            )}
+          </div>
         </div>
       </section>
       <section className="shell section related">

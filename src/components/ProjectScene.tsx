@@ -27,6 +27,9 @@ const copy = {
     old: "Benvenuti nel sito",
     contact: "Contattaci",
     days: ["L", "M", "M", "G", "V", "S", "D"],
+    hello: "Ciao!",
+    push: "Il tuo ordine è pronto",
+    book: "Prenota",
   },
   en: {
     order: "Order received",
@@ -39,6 +42,9 @@ const copy = {
     old: "Welcome to our site",
     contact: "Contact us",
     days: ["M", "T", "W", "T", "F", "S", "S"],
+    hello: "Hello!",
+    push: "Your order is ready",
+    book: "Book now",
   },
 };
 
@@ -911,6 +917,218 @@ function Restyle({ t }: { t: (typeof copy)["it"] }) {
   );
 }
 
+function Mobile({ t }: { t: (typeof copy)["it"] }) {
+  return (
+    <>
+      <defs>
+        <clipPath id="ps-m-cards">
+          <rect x="82" y="78" width="100" height="62" />
+        </clipPath>
+      </defs>
+      <rect
+        x="70"
+        y="12"
+        width="124"
+        height="236"
+        rx="24"
+        fill="#fff"
+        stroke="#c3d0e2"
+        strokeWidth="1.5"
+      />
+      <rect x="114" y="20" width="36" height="7" rx="3.5" fill={INK} />
+      <circle cx="90" cy="48" r="9" fill={SOFT} />
+      <circle cx="90" cy="45.5" r="3.2" fill={INK} />
+      <path d="M84 53a6 4.5 0 0 1 12 0" fill={INK} />
+      <text x="104" y="51" fontSize="10" fontWeight="700" fill={INK}>
+        {t.hello}
+      </text>
+      <circle cx="176" cy="48" r="4" fill={BLUE} />
+      <g clipPath="url(#ps-m-cards)">
+        <g className="ps-carousel">
+          {[0, 1, 2, 3].map((i) => (
+            <g key={i}>
+              <rect
+                x={82 + i * 92}
+                y="78"
+                width="84"
+                height="62"
+                rx="10"
+                fill={["#1f3c64", BLUE, "#f0c27b", "#1f3c64"][i]}
+              />
+              <rect
+                x={92 + i * 92}
+                y="92"
+                width="40"
+                height="6"
+                rx="3"
+                fill="#fff"
+                opacity=".9"
+              />
+              <rect
+                x={92 + i * 92}
+                y="104"
+                width="28"
+                height="5"
+                rx="2.5"
+                fill="#fff"
+                opacity=".55"
+              />
+              <circle
+                cx={150 + i * 92}
+                cy="124"
+                r="9"
+                fill="none"
+                stroke="#fff"
+                strokeWidth="3"
+                opacity=".7"
+              />
+            </g>
+          ))}
+        </g>
+      </g>
+      {[152, 180, 208].map((y, i) => (
+        <g key={y}>
+          <rect
+            x="82"
+            y={y}
+            width="100"
+            height="22"
+            rx="7"
+            fill="#f4f7fc"
+            stroke={LINE}
+          />
+          <circle
+            cx="94"
+            cy={y + 11}
+            r="5"
+            fill={[SOFT, "#d7ecdf", "#f0d9b5"][i]}
+          />
+          <rect
+            x="104"
+            y={y + 6}
+            width="44"
+            height="4"
+            rx="2"
+            fill={INK}
+            opacity=".75"
+          />
+          <rect
+            x="104"
+            y={y + 13}
+            width="30"
+            height="3"
+            rx="1.5"
+            fill="#b9c8dc"
+          />
+        </g>
+      ))}
+      <rect x="76" y="232" width="112" height="10" rx="5" fill="#f4f7fc" />
+      <rect
+        className="ps-tab"
+        x="80"
+        y="234"
+        width="22"
+        height="6"
+        rx="3"
+        fill={INK}
+      />
+      {[91, 118, 145, 172].map((x) => (
+        <circle key={x} cx={x} cy="237" r="1.6" fill="#8a97a8" />
+      ))}
+
+      <rect
+        x="214"
+        y="32"
+        width="124"
+        height="216"
+        rx="24"
+        fill="#fff"
+        stroke="#c3d0e2"
+        strokeWidth="1.5"
+      />
+      <rect x="258" y="40" width="36" height="7" rx="3.5" fill={INK} />
+      <rect x="226" y="58" width="100" height="78" rx="12" fill="#1f3c64" />
+      <circle
+        cx="276"
+        cy="97"
+        r="22"
+        fill="none"
+        stroke="#a8c9f6"
+        strokeWidth="8"
+      />
+      <rect x="226" y="148" width="78" height="8" rx="3" fill={INK} />
+      <rect x="226" y="162" width="96" height="5" rx="2.5" fill="#b9c8dc" />
+      <rect x="226" y="172" width="70" height="5" rx="2.5" fill="#b9c8dc" />
+      {[0, 1, 2, 3, 4].map((i) => (
+        <circle
+          key={i}
+          cx={232 + i * 12}
+          cy="190"
+          r="3.5"
+          fill={i < 4 ? "#e2a93b" : LINE}
+        />
+      ))}
+      <rect
+        className="ps-cta"
+        x="226"
+        y="208"
+        width="100"
+        height="26"
+        rx="13"
+        fill={INK}
+      />
+      <text
+        x="276"
+        y="225"
+        textAnchor="middle"
+        fontSize="10"
+        fontWeight="700"
+        fill="#fff"
+      >
+        {t.book}
+      </text>
+      <g className="ps-push">
+        <rect x="220" y="52" width="112" height="34" rx="10" fill={INK} />
+        <rect x="228" y="60" width="18" height="18" rx="5" fill={BLUE} />
+        <text
+          x="237"
+          y="73"
+          textAnchor="middle"
+          fontSize="9"
+          fontWeight="700"
+          fill="#fff"
+        >
+          c
+        </text>
+        <text x="252" y="66" fontSize="7" fill="#a8c9f6">
+          CLM · now
+        </text>
+        <text x="252" y="78" fontSize="7.5" fontWeight="600" fill="#fff">
+          {t.push}
+        </text>
+      </g>
+      <g fontFamily={MONO} fontSize="8" fontWeight="700">
+        <rect
+          x="346"
+          y="196"
+          width="44"
+          height="18"
+          rx="9"
+          fill="#fff"
+          stroke={LINE}
+        />
+        <text x="368" y="208" textAnchor="middle" fill={INK}>
+          iOS
+        </text>
+        <rect x="346" y="220" width="44" height="18" rx="9" fill={INK} />
+        <text x="368" y="232" textAnchor="middle" fill="#fff">
+          Android
+        </text>
+      </g>
+    </>
+  );
+}
+
 export function ProjectScene({
   scene,
   locale,
@@ -934,6 +1152,7 @@ export function ProjectScene({
       {scene === "webapp" && <WebApp t={t} />}
       {scene === "landing" && <Landing t={t} />}
       {scene === "restyle" && <Restyle t={t} />}
+      {scene === "mobile" && <Mobile t={t} />}
     </svg>
   );
 }
