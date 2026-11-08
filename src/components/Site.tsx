@@ -5,9 +5,12 @@ import { BuildStory } from "./BuildStory";
 import { Motion } from "./Motion";
 import { Timeline } from "./Timeline";
 import { IntroArt, type ArtVariant } from "./IntroArt";
+import { Projects } from "./Projects";
+import { ProjectScene } from "./ProjectScene";
+import { Pipeline } from "./Pipeline";
+import { projects, sceneFor, type SceneKey } from "@/lib/projects";
 import { NavigationReset } from "./NavigationReset";
 import Link from "next/link";
-import Image from "next/image";
 import { dictionary, pageTitle } from "@/lib/content";
 import {
   href,
@@ -48,15 +51,17 @@ function Intro({
   text,
   art,
   locale,
+  scene,
 }: {
   label: string;
   title: string;
   text: string;
   art?: ArtVariant;
   locale?: Locale;
+  scene?: SceneKey;
 }) {
   return (
-    <section className={`shell page-intro${art ? " has-art" : ""}`}>
+    <section className={`shell page-intro${art || scene ? " has-art" : ""}`}>
       <div className="intro-copy">
         <p className="eyebrow">
           <span className="status-dot" />
@@ -65,7 +70,13 @@ function Intro({
         <h1>{title}</h1>
         <p className="intro-text">{text}</p>
       </div>
-      {art && locale && <IntroArt variant={art} locale={locale} />}
+      {scene && locale ? (
+        <div className="intro-art intro-scene" aria-hidden="true">
+          <ProjectScene scene={scene} locale={locale} />
+        </div>
+      ) : (
+        art && locale && <IntroArt variant={art} locale={locale} />
+      )}
     </section>
   );
 }
@@ -167,53 +178,6 @@ function Services({
     </section>
   );
 }
-function Examples({ locale }: { locale: Locale }) {
-  const t = dictionary(locale);
-  return (
-    <section className="projects section" id="progetti">
-      <div className="shell">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">{t.examplesLabel}</p>
-            <h2>{t.examplesTitle}</h2>
-          </div>
-          <p>{t.examplesIntro}</p>
-        </div>
-        <div className="project-grid">
-          {t.sectors.map((sector, index) => (
-            <Link
-              className={`project-card project-${index}`}
-              href={href(locale, sector[0])}
-              key={sector[0]}
-            >
-              <div className="project-image">
-                <span className="project-tag">
-                  {t.concept} / 0{index + 1}
-                </span>
-                <Image
-                  src={`/images/optimized/${sector[0]}-thumb.webp`}
-                  alt={sector[1]}
-                  width={1280}
-                  height={870}
-                  sizes="(max-width: 700px) 100vw, 33vw"
-                />
-              </div>
-              <div className="project-info">
-                <div>
-                  <p>{sector[4]} / web design</p>
-                  <h3>{sector[1]}</h3>
-                </div>
-                <span className="round-arrow" aria-hidden="true">
-                  ↗
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 const deliverables = {
   it: [
     "Obiettivi e preventivo",
@@ -308,6 +272,37 @@ function Packages({ locale }: { locale: Locale }) {
         ))}
       </div>
       <p className="price-note">{t.priceNote}</p>
+      <div className="custom-band">
+        <div>
+          <p className="eyebrow">
+            {locale === "it" ? "Oltre i pacchetti" : "Beyond the packages"}
+          </p>
+          <h2>
+            {locale === "it"
+              ? "E-commerce, gestionali e web app su preventivo."
+              : "Online stores, management software and web apps, quoted to scope."}
+          </h2>
+          <p>
+            {locale === "it"
+              ? "Progetti con funzionalità specifiche partono da un’analisi dei requisiti: definiamo insieme fasi, priorità e budget."
+              : "Projects with specific features start with a requirements review: together we define phases, priorities and budget."}
+          </p>
+        </div>
+        <div className="custom-links">
+          {projects(locale)
+            .filter((p) =>
+              ["e-commerce", "gestionali", "web-app", "landing-page"].includes(
+                p.route,
+              ),
+            )
+            .map((p) => (
+              <Link key={p.route} href={href(locale, p.route)}>
+                {p.name}
+                <Arrow />
+              </Link>
+            ))}
+        </div>
+      </div>
     </section>
   );
 }
@@ -455,56 +450,6 @@ function About({ locale }: { locale: Locale }) {
     </>
   );
 }
-function Sector({ locale, route }: { locale: Locale; route: Route }) {
-  const t = dictionary(locale);
-  const sector = t.sectors.find((s) => s[0] === route)!;
-  return (
-    <>
-      <Intro
-        label={`${t.concept} / ${sector[1]}`}
-        title={sector[2]}
-        text={sector[3]}
-        art="projects"
-        locale={locale}
-      />
-      <section className="shell section section-after-intro">
-        <div className="sector-preview">
-          <Image
-            src={`/images/optimized/${route}-thumb.webp`}
-            width={1280}
-            height={870}
-            alt={`${t.concept}: ${sector[1]}`}
-            priority
-          />
-        </div>
-        <p className="price-note">{t.demoNote}</p>
-        <div className="sector-detail">
-          <div>
-            <p className="eyebrow">{sector[1]}</p>
-            <h2>{t.sectorIncludes}</h2>
-          </div>
-          <div>
-            <ul className="check-list">
-              {t.sectorFeatures.map((feature) => (
-                <li key={feature}>
-                  <span aria-hidden="true">✓</span>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <Button locale={locale}>{t.sectorCta}</Button>
-          </div>
-        </div>
-        <Link
-          className="text-link"
-          href={`${href(locale, "servizi")}#progetti`}
-        >
-          ← {t.back}
-        </Link>
-      </section>
-    </>
-  );
-}
 function Contact({ locale }: { locale: Locale }) {
   const t = dictionary(locale);
   return (
@@ -632,9 +577,9 @@ function Footer({ locale }: { locale: Locale }) {
           </div>
           <div>
             <h3>{t.examples}</h3>
-            {t.sectors.map((s) => (
-              <Link key={s[0]} href={href(locale, s[0])}>
-                {s[1]}
+            {projects(locale).map((p) => (
+              <Link key={p.route} href={href(locale, p.route)}>
+                {p.name}
               </Link>
             ))}
             <a href={mapsUrl} target="_blank" rel="noopener noreferrer">
@@ -718,8 +663,8 @@ export function Site({ locale, route }: { locale: Locale; route: Route }) {
             <BuildStory locale={locale} />
             <Presentation locale={locale} />
             <Services locale={locale} />
-            <Examples locale={locale} />
-            <Process locale={locale} />
+            <Projects locale={locale} />
+            <Pipeline locale={locale} />
             <Reviews locale={locale} />
             <section className="shell about-teaser">
               <p className="eyebrow">{t.aboutLabel}</p>
@@ -742,7 +687,7 @@ export function Site({ locale, route }: { locale: Locale; route: Route }) {
               locale={locale}
             />
             <Services locale={locale} full />
-            <Examples locale={locale} />
+            <Projects locale={locale} />
             <Faq locale={locale} />
           </>
         )}
@@ -779,15 +724,15 @@ export function Site({ locale, route }: { locale: Locale; route: Route }) {
               label={t.examplesLabel}
               title={
                 locale === "it"
-                  ? "Un sito diverso per ogni professione."
-                  : "A different website for every profession."
+                  ? "Dal sito vetrina al gestionale. Per chiunque."
+                  : "From websites to management software. For anyone."
               }
               text={t.examplesIntro}
               art="projects"
               locale={locale}
             />
-            <Examples locale={locale} />
-            <Process locale={locale} />
+            <Projects locale={locale} />
+            <Pipeline locale={locale} />
           </>
         )}
         {route === "recensioni" && (
@@ -817,9 +762,6 @@ export function Site({ locale, route }: { locale: Locale; route: Route }) {
           />
         )}
         {route === "contatti" && <Contact locale={locale} />}
-        {["avvocati", "medici", "professionisti"].includes(route) && (
-          <Sector locale={locale} route={route} />
-        )}
         {route !== "contatti" &&
           !(legalRoutes as readonly string[]).includes(route) && (
             <CallToAction locale={locale} />
@@ -848,6 +790,7 @@ function Solution({ locale, route }: { locale: Locale; route: Route }) {
         title={s.title}
         text={s.intro}
         art={solutionArt[s.route] ?? "projects"}
+        scene={sceneFor(s.route)}
         locale={locale}
       />
       <section className="shell section section-after-intro solution-layout">

@@ -4,19 +4,17 @@ import type { Locale, Route } from "./routes";
 export const content = {
   it: {
     nav: ["Home", "Chi siamo", "Servizi", "Pacchetti", "Metodo", "Contatti"],
-    examples: "Esempi",
+    examples: "Cosa realizziamo",
     menu: "Menu",
     close: "Chiudi menu",
     language: "Cambia lingua",
     skip: "Vai al contenuto",
     contact: "Parliamo del tuo progetto",
     discover: "Scopri i servizi",
-    allExamples: "Esplora gli esempi",
-    viewExample: "Esplora il progetto",
     eyebrow: "Sviluppo web · Novara, Italia",
     hero: ["Il tuo lavoro merita", "un sito all’altezza."],
     intro:
-      "Progettiamo e sviluppiamo siti web per chi vuole presentarsi bene, raccontare ciò che fa e trasformare una visita in una conversazione.",
+      "Siti vetrina, e-commerce, gestionali e web app: progettiamo e sviluppiamo strumenti digitali per chi vuole presentarsi bene, vendere online o lavorare meglio.",
     heroNote: "Design su misura. Sviluppo solido. Un contatto diretto.",
     approach: [
       "Design che ti rappresenta",
@@ -53,34 +51,10 @@ export const content = {
         "Aggiornamenti, nuove sezioni e supporto dopo la pubblicazione, in base alle esigenze del progetto.",
       ],
     ],
-    examplesLabel: "02 / Possibili direzioni",
-    examplesTitle: "Settori diversi. La stessa cura.",
+    examplesLabel: "02 / Cosa realizziamo",
+    examplesTitle: "Dal sito vetrina al gestionale. Su misura per chi lo usa.",
     examplesIntro:
-      "Tre concept dimostrativi per immaginare il tuo prossimo sito. Ogni soluzione viene adattata alla tua identità e ai tuoi contenuti.",
-    concept: "Concept dimostrativo",
-    sectors: [
-      [
-        "avvocati",
-        "Studi legali",
-        "Autorevolezza, senza complicazioni.",
-        "Competenze, aree di attività e persone: un sito che ispira fiducia e facilita il primo contatto.",
-        "legale",
-      ],
-      [
-        "medici",
-        "Medici & studi sanitari",
-        "La chiarezza fa stare meglio.",
-        "Specializzazioni, informazioni pratiche e richieste di appuntamento in un percorso semplice per il paziente.",
-        "sanitario",
-      ],
-      [
-        "professionisti",
-        "Professionisti & consulenti",
-        "Dai spazio alle tue competenze.",
-        "Servizi, metodo e progetti presentati con ordine, per rendere immediato il valore del tuo lavoro.",
-        "professionale",
-      ],
-    ],
+      "Professionisti, negozi, aziende e startup: ogni progetto parte dai tuoi obiettivi, non da un modello. Tipologie diverse, lo stesso metodo e la stessa cura.",
     methodLabel: "03 / Come lavoriamo",
     methodTitle: "Un percorso chiaro, dall’idea alla pubblicazione.",
     methodIntro:
@@ -224,31 +198,23 @@ export const content = {
     formOptions: [
       "Un nuovo sito",
       "Restyling del sito",
-      "Un progetto su misura",
+      "Un e-commerce",
+      "Un gestionale o una web app",
+      "Una landing page",
       "Informazioni sui pacchetti",
     ],
     emailAction: "Scrivi un’email",
     whatsapp: "Parliamone su WhatsApp",
     location: "Dove siamo",
     map: "Apri su Google Maps",
-    footer: "Siti web progettati bene, per chi ha qualcosa da raccontare.",
+    footer:
+      "Siti, e-commerce e software progettati bene, per chi ha qualcosa da costruire.",
     rights: "Tutti i diritti riservati.",
     privacy: "Informativa privacy",
     reviews: "Le parole di chi ci ha scelto",
     reviewsLink: "Recensioni su Google",
     reviewsFallback: "Scopri CLM Automation su Google.",
     reviewCount: "recensioni",
-    demoNote:
-      "Esempio di design, non un sito cliente. Nomi, immagini e contenuti delle anteprime sono dimostrativi.",
-    sectorIncludes: "Cosa può includere il tuo sito",
-    sectorFeatures: [
-      "Presentazione dello studio e del team",
-      "Servizi e aree di specializzazione",
-      "Un percorso di contatto semplice",
-      "Informazioni pratiche e sede",
-    ],
-    sectorCta: "Vorrei un sito così",
-    back: "Torna agli esempi",
     consent:
       "Possiamo usare statistiche di navigazione per migliorare il sito? La scelta è facoltativa.",
     accept: "Accetta",
@@ -259,19 +225,17 @@ export const content = {
   },
   en: {
     nav: ["Home", "About", "Services", "Packages", "Process", "Contact"],
-    examples: "Examples",
+    examples: "What we build",
     menu: "Menu",
     close: "Close menu",
     language: "Change language",
     skip: "Skip to content",
     contact: "Let’s talk about your project",
     discover: "Explore our services",
-    allExamples: "Explore the concepts",
-    viewExample: "Explore the concept",
     eyebrow: "Web development · Novara, Italy",
     hero: ["Your work deserves", "a website to match."],
     intro:
-      "We design and develop websites for people who want to present their business clearly, share what they do and turn a visit into a conversation.",
+      "Business websites, online stores, management software and web apps: we design and build digital tools for people who want to present their work, sell online or simply work better.",
     heroNote: "Tailored design. Solid development. A direct conversation.",
     approach: [
       "Design that represents you",
@@ -308,34 +272,11 @@ export const content = {
         "Updates, new sections and support after launch, tailored to the needs of your project.",
       ],
     ],
-    examplesLabel: "02 / Possible directions",
-    examplesTitle: "Different fields. The same attention to detail.",
+    examplesLabel: "02 / What we build",
+    examplesTitle:
+      "From business websites to management software. Built around the people who use it.",
     examplesIntro:
-      "Three demonstration concepts to help you picture your next website. Each solution is adapted to your identity and content.",
-    concept: "Demonstration concept",
-    sectors: [
-      [
-        "avvocati",
-        "Law firms",
-        "Authority, without complexity.",
-        "Expertise, practice areas and people: a website that builds confidence and makes the first contact easy.",
-        "legal",
-      ],
-      [
-        "medici",
-        "Doctors & healthcare",
-        "Clarity is part of good care.",
-        "Specialities, practical information and appointment enquiries in a straightforward patient journey.",
-        "healthcare",
-      ],
-      [
-        "professionisti",
-        "Professionals & consultants",
-        "Make room for your expertise.",
-        "Services, methods and projects presented clearly, so the value of your work is easy to understand.",
-        "professional",
-      ],
-    ],
+      "Professionals, shops, companies and start-ups: every project starts from your goals, not from a template. Different kinds of products, one method and the same care.",
     methodLabel: "03 / Our process",
     methodTitle: "A clear path, from the first idea to launch.",
     methodIntro:
@@ -479,31 +420,23 @@ export const content = {
     formOptions: [
       "A new website",
       "A website redesign",
-      "A custom project",
+      "An online store",
+      "Management software or a web app",
+      "A landing page",
       "Package information",
     ],
     emailAction: "Send an email",
     whatsapp: "Let’s talk on WhatsApp",
     location: "Find us",
     map: "Open Google Maps",
-    footer: "Thoughtfully built websites, for people with a story to tell.",
+    footer:
+      "Websites, online stores and software, thoughtfully built for people with something to create.",
     rights: "All rights reserved.",
     privacy: "Privacy notice",
     reviews: "In our clients’ words",
     reviewsLink: "Reviews on Google",
     reviewsFallback: "Find CLM Automation on Google.",
     reviewCount: "reviews",
-    demoNote:
-      "A design example, not a client website. Names, images and content in the previews are for demonstration.",
-    sectorIncludes: "What your website could include",
-    sectorFeatures: [
-      "Your practice and your team",
-      "Services and areas of expertise",
-      "A straightforward enquiry journey",
-      "Practical details and location",
-    ],
-    sectorCta: "I’d like a website like this",
-    back: "Back to the concepts",
     consent:
       "May we use browsing statistics to improve the website? This is optional.",
     accept: "Accept",
@@ -535,7 +468,5 @@ export function pageTitle(locale: Locale, route: Route): string {
   const solution = solutions(locale).find((s) => s.route === route);
   if (solution) return solution.name;
   const index = main.indexOf(route);
-  return index >= 0
-    ? t.nav[index]
-    : (t.sectors.find((s) => s[0] === route)?.[1] ?? "CLM Automation");
+  return index >= 0 ? t.nav[index] : "CLM Automation";
 }

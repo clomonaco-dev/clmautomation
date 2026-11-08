@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 
 /* Method page: a vertical line that draws itself as you scroll and lights up each step. */
 
-const ICONS = [
+export const ICONS = [
   // conversation
   "M10 12h22a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H20l-7 6v-6h-3a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4zM40 22h4a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-2v5l-6-5h-8",
   // wireframe

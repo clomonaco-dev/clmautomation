@@ -24,11 +24,34 @@ const images = originalFiles.filter((file) =>
 );
 const digest = (buffer) => createHash("sha256").update(buffer).digest("hex");
 
-test("All 9 legacy pages are exported at their original URLs", async () => {
+// The three former sector pages were replaced by transversal project types:
+// their URLs must keep working through permanent redirects.
+const redirected = ["avvocati", "medici", "professionisti"];
+const isRedirected = (rel) => redirected.includes(rel.split("/")[0]);
+
+test("Former sector pages redirect permanently to the projects page", async () => {
+  const toml = (await readFile("netlify.toml", "utf8")).replaceAll(
+    "\r\n",
+    "\n",
+  );
+  for (const lang of ["", "/en"])
+    for (const page of redirected)
+      for (const from of [`${lang}/${page}`, `${lang}/${page}/*`]) {
+        const rule = `from = "${from}"
+  to = "${lang}/progetti/"
+  status = 301`;
+        assert.ok(toml.includes(rule), `Missing 301 for ${from}`);
+      }
+  for (const page of redirected)
+    await assert.rejects(access(path.join("out", page, "index.html")));
+});
+
+test("All other legacy pages are exported at their original URLs", async () => {
   assert.equal(pages.length, 9);
   const sitemap = await readFile("out/sitemap.xml", "utf8");
   for (const file of pages) {
     const rel = relative(file);
+    if (isRedirected(rel)) continue;
     await access(path.join("out", rel));
     const url = "https://clmautomation.it/" + rel.replace(/index\.html$/, "");
     assert.ok(

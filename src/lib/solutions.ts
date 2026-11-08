@@ -6,6 +6,10 @@ export const solutionRoutes = [
   "seo-performance",
   "siti-multilingua",
   "assistenza-web",
+  "e-commerce",
+  "gestionali",
+  "web-app",
+  "landing-page",
 ] as const;
 const it = [
   [
@@ -92,6 +96,62 @@ const it = [
     "Durata, tempi di risposta e attività incluse sono indicati nell’accordo. Hosting, licenze e servizi esterni vengono valutati separatamente quando necessari.",
     "pubblicazione",
   ],
+  [
+    "E-commerce",
+    "Il tuo catalogo, sempre aperto.",
+    "Negozi online per brand, artigiani e aziende: prodotti chiari, acquisto semplice e una gestione degli ordini che non complica le tue giornate.",
+    "Partiamo da cosa vendi e da come lavori oggi: catalogo, varianti, spedizioni, pagamenti e ordini. Poi scegliamo la soluzione più adatta, una piattaforma esistente o uno sviluppo su misura, in base a volumi, budget e integrazioni necessarie.",
+    [
+      "Catalogo con categorie, varianti e ricerca",
+      "Carrello e checkout chiari anche da smartphone",
+      "Pagamenti online e gestione degli ordini",
+      "Integrazioni concordate: spedizioni, magazzino, fatturazione",
+    ],
+    "Commissioni, piattaforme e servizi di pagamento vengono valutati insieme nel preventivo: conosci in anticipo costi ricorrenti e responsabilità.",
+    "design",
+  ],
+  [
+    "Gestionali su misura",
+    "Il software che segue il tuo modo di lavorare.",
+    "Fogli di calcolo che si moltiplicano, dati sparsi, passaggi ripetuti a mano: un gestionale web su misura mette ordine e restituisce tempo.",
+    "Analizziamo i processi reali: chi inserisce i dati, chi li approva, cosa serve vedere a colpo d’occhio. Poi progettiamo un’applicazione accessibile dal browser, con ruoli e permessi, portando l’approccio strutturato maturato nello sviluppo di software industriale.",
+    [
+      "Anagrafiche, pratiche, ordini o commesse in un unico posto",
+      "Ruoli, permessi e accesso sicuro da browser",
+      "Dashboard, report ed esportazione dei dati",
+      "Automazione dei passaggi ripetitivi e notifiche",
+    ],
+    "Si parte da un primo modulo essenziale e si cresce per fasi: ogni rilascio è concordato, provato e documentato.",
+    "sviluppo",
+  ],
+  [
+    "Web app & portali",
+    "Aree riservate, prenotazioni e servizi online.",
+    "Portali clienti, sistemi di prenotazione, configuratori e strumenti interni: applicazioni web semplici da usare, da qualsiasi dispositivo.",
+    "Definiamo utenti, flussi e dati da gestire, poi disegniamo l’interfaccia prima di scrivere il codice. Il risultato è un’applicazione veloce e responsive, pronta a dialogare con i servizi che già usi.",
+    [
+      "Area riservata con accesso degli utenti",
+      "Prenotazioni, richieste e calendari online",
+      "Integrazione con API e servizi esterni concordati",
+      "Interfacce React e Next.js veloci e accessibili",
+    ],
+    "Hosting, sicurezza, backup e manutenzione vengono definiti nel preventivo in base ai dati trattati e al numero di utenti.",
+    "struttura",
+  ],
+  [
+    "Landing page",
+    "Una pagina. Un obiettivo.",
+    "Per lanciare un prodotto, un evento o una campagna: una pagina veloce e mirata che accompagna il visitatore verso un’unica azione.",
+    "Costruiamo il messaggio attorno a chi arriva dalla campagna: una promessa chiara, elementi concreti, risposte ai dubbi e un invito all’azione sempre visibile. Leggerezza e velocità di caricamento fanno parte del progetto.",
+    [
+      "Struttura persuasiva e testi concordati",
+      "Modulo di contatto, iscrizione o richiesta",
+      "Caricamento rapido e ottimizzazione mobile",
+      "Statistiche attivate solo con il consenso del visitatore",
+    ],
+    "I risultati dipendono anche da offerta, pubblico e campagna: progettiamo la pagina per rendere semplice e misurabile il passo successivo.",
+    "analisi",
+  ],
 ] as const;
 const en = [
   [
@@ -177,6 +237,62 @@ const en = [
     ],
     "Duration, response times and included tasks are set out in the agreement. Hosting, licences and external services are considered separately where needed.",
     "pubblicazione",
+  ],
+  [
+    "E-commerce",
+    "Your catalogue, always open.",
+    "Online stores for brands, makers and businesses: clear products, simple checkout and order management that fits your day.",
+    "We start with what you sell and how you work today: catalogue, variants, shipping, payments and orders. Then we choose the right approach, an established platform or a custom build, based on volume, budget and the integrations you need.",
+    [
+      "Catalogue with categories, variants and search",
+      "Clear cart and checkout, also on phones",
+      "Online payments and order management",
+      "Agreed integrations: shipping, stock, invoicing",
+    ],
+    "Fees, platforms and payment providers are reviewed together in the quote, so recurring costs and responsibilities are clear from the start.",
+    "design",
+  ],
+  [
+    "Custom management software",
+    "Software that follows the way you work.",
+    "Multiplying spreadsheets, scattered data and repeated manual steps: custom web-based management software brings order and gives you time back.",
+    "We analyse your real processes: who enters data, who approves it and what needs to be visible at a glance. Then we design a browser-based application with roles and permissions, bringing the structured approach of industrial software development.",
+    [
+      "Customers, cases, orders or jobs in one place",
+      "Roles, permissions and secure browser access",
+      "Dashboards, reports and data export",
+      "Automated repetitive steps and notifications",
+    ],
+    "We start with an essential first module and grow in phases: every release is agreed, tested and documented.",
+    "sviluppo",
+  ],
+  [
+    "Web apps & portals",
+    "Private areas, bookings and online services.",
+    "Customer portals, booking systems, configurators and internal tools: web applications that are easy to use on any device.",
+    "We define users, journeys and data first, then design the interface before writing code. The result is a fast, responsive application that works with the services you already use.",
+    [
+      "Private area with user sign-in",
+      "Online bookings, requests and calendars",
+      "Agreed API and third-party integrations",
+      "Fast, accessible React and Next.js interfaces",
+    ],
+    "Hosting, security, backups and maintenance are defined in the quote according to the data involved and the number of users.",
+    "struttura",
+  ],
+  [
+    "Landing pages",
+    "One page. One goal.",
+    "Launch a product, an event or a campaign with a fast, focused page that guides visitors towards a single action.",
+    "We shape the message around visitors arriving from your campaign: a clear promise, concrete details, answers to doubts and a call to action that is always in reach. Lightness and loading speed are part of the brief.",
+    [
+      "Persuasive structure and agreed copy",
+      "Contact, sign-up or request form",
+      "Fast loading and mobile optimisation",
+      "Analytics enabled only with visitor consent",
+    ],
+    "Results also depend on your offer, audience and campaign: we design the page to make the next step simple and measurable.",
+    "analisi",
   ],
 ] as const;
 export function solutions(locale: Locale) {

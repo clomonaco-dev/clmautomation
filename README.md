@@ -22,7 +22,9 @@ L'anteprima statica usa `http://localhost:3101`. Il server di sviluppo usa la po
 
 ## Route e lingue
 
-Le nove route italiane rimangono `/`, `/chi-siamo/`, `/servizi/`, `/pacchetti/`, `/metodo/`, `/contatti/`, `/avvocati/`, `/medici/` e `/professionisti/`.
+Le route storiche `/`, `/chi-siamo/`, `/servizi/`, `/pacchetti/`, `/metodo/` e `/contatti/` restano invariate. Le vecchie pagine di settore `/avvocati/`, `/medici/` e `/professionisti/` (anche in `/en/`) sono state sostituite dalle tipologie di progetto trasversali e reindirizzano con un 301 a `/progetti/` tramite `netlify.toml`.
+
+Le tipologie di progetto (siti vetrina, e-commerce, gestionali, web app e portali, landing page, restyling) sono definite in `src/lib/projects.ts`; le relative pagine usano `src/lib/solutions.ts` e le anteprime animate in `src/components/ProjectScene.tsx`.
 
 La versione inglese usa `/en/` e gli stessi slug: ad esempio `/en/servizi/`. Il selettore lingua mantiene la pagina corrente. L'esportazione con `trailingSlash` produce un `index.html` in ogni cartella, quindi anche i collegamenti storici `/servizi/index.html` rimangono disponibili sull'hosting statico. Non aggiungere un redirect SPA verso `/index.html`.
 
@@ -39,7 +41,7 @@ Titoli, descrizioni, canonical e alternati linguistici sono generati per pagina.
 - `public/images/optimized`: anteprime WebP ottimizzate; originali conservati in `public/images`.
 - `legacy/src`: sito HTML precedente, conservato come riferimento e non pubblicato.
 
-Non sono stati inventati clienti, recensioni o risultati commerciali: i tre esempi di settore sono dichiarati concept dimostrativi. Prezzi di partenza, recapiti e documentazione derivano dal sito originale.
+Non sono stati inventati clienti, recensioni o risultati commerciali: le anteprime delle tipologie di progetto sono dichiarate illustrazioni dimostrative. Prezzi di partenza, recapiti e documentazione derivano dal sito originale.
 
 ## Netlify e contatti
 

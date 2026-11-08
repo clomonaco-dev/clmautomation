@@ -19,12 +19,11 @@ export function metadataFor(locale: Locale, route: Route): Metadata {
           ? t.packageIntro
           : route === "metodo"
             ? t.methodIntro
-            : (t.sectors.find((s) => s[0] === route)?.[3] ??
-              (route === "recensioni"
-                ? t.reviews
-                : route === "progetti"
-                  ? t.examplesIntro
-                  : t.intro)));
+            : route === "recensioni"
+              ? t.reviews
+              : route === "progetti"
+                ? t.examplesIntro
+                : t.intro);
   return {
     metadataBase: new URL(siteUrl),
     title,

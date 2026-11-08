@@ -17,7 +17,10 @@ export const REVEAL = [
   ".intro-art",
   ".section-heading > *",
   ".service-card",
-  ".project-card",
+  ".pj-card",
+  ".pj-note",
+  ".pl-step",
+  ".custom-band",
   ".process-grid > article",
   ".pricing-card",
   ".price-note",
@@ -31,20 +34,18 @@ export const REVEAL = [
   ".related-grid > a",
   ".review-card",
   ".review-score",
-  ".sector-preview",
-  ".sector-detail > *",
   ".solution-layout > div",
   ".contact-info > *",
   ".contact-form",
   ".about-teaser",
   ".cta-inner > div",
-  ".presentation-stage",
   ".stats > div",
   ".tl-step",
   ".footer-grid > div",
 ].join(",");
 
-const SPOT = ".service-card, .pricing-card, .related-grid > a, .review-card";
+const SPOT =
+  ".service-card, .pricing-card, .related-grid > a, .review-card, .pj-card";
 const SPIN: [string, number, number][] = [
   [".cta-star", 15, 0.12],
   [".poster-symbol", 0, 0.1],
@@ -60,6 +61,16 @@ export function Motion() {
     root.classList.add("motion-live");
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const animate = root.classList.contains("motion") && !reduced;
+
+    // Looping scenes only animate while on screen
+    const live = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries)
+          e.target.classList.toggle("is-live", e.isIntersecting);
+      },
+      { rootMargin: "80px 0px" },
+    );
+    document.querySelectorAll(".ps").forEach((el) => live.observe(el));
 
     // Reveal
     const seen = new WeakSet<Element>();
@@ -161,6 +172,7 @@ export function Motion() {
 
     return () => {
       io.disconnect();
+      live.disconnect();
       mo.disconnect();
       cancelAnimationFrame(raf);
       removeEventListener("scroll", onScroll);

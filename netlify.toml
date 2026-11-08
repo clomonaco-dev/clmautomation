@@ -18,3 +18,76 @@
   for = "/_next/static/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Former sector pages now point to the transversal projects page (permanent).
+[[redirects]]
+  from = "/avvocati"
+  to = "/progetti/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/avvocati/*"
+  to = "/progetti/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/medici"
+  to = "/progetti/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/medici/*"
+  to = "/progetti/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/professionisti"
+  to = "/progetti/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/professionisti/*"
+  to = "/progetti/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/avvocati"
+  to = "/en/progetti/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/avvocati/*"
+  to = "/en/progetti/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/medici"
+  to = "/en/progetti/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/medici/*"
+  to = "/en/progetti/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/professionisti"
+  to = "/en/progetti/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/professionisti/*"
+  to = "/en/progetti/"
+  status = 301
+  force = true

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { dictionary, pageTitle } from "@/lib/content";
+import { projects } from "@/lib/projects";
 import { href, type Locale, type Route } from "@/lib/routes";
 
 export function Header({ locale, route }: { locale: Locale; route: Route }) {
@@ -122,13 +123,13 @@ export function Header({ locale, route }: { locale: Locale; route: Route }) {
             </Link>
           ))}
           <p>{t.examples}</p>
-          {t.sectors.map((s) => (
+          {projects(locale).map((p) => (
             <Link
-              key={s[0]}
-              href={href(locale, s[0])}
+              key={p.route}
+              href={href(locale, p.route)}
               onClick={() => setOpen(false)}
             >
-              {s[1]}
+              {p.name}
             </Link>
           ))}
         </nav>
